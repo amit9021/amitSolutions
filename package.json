@@ -8,9 +8,12 @@
     "@testing-library/user-event": "^14.4.3",
     "chokidar": "^3.5.3",
     "emailjs-com": "^3.2.0",
+    "framer-motion": "^12.23.16",
+    "lucide-react": "^0.544.0",
     "particles-bg": "^2.5.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-scripts": "^5.0.1",
     "react-simple-image-viewer": "^0.0.8",
     "smooth-scroll": "^16.1.3"

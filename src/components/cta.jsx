@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageCircle, Phone, Mail, X, Plus } from "lucide-react";
 
 export const CTA = (props) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -8,49 +10,78 @@ export const CTA = (props) => {
   };
 
   const contactData = props.data || {};
-  const phone = contactData.phone || "0522435115";
-  const email = contactData.email || "yakovb50@gmail.com";
+  const phone = contactData.phone || "+972-50-000-0000";
+  const whatsapp = contactData.whatsapp || "+972500000000";
+  const email = contactData.email || "amit@amitsolutions.co.il";
+  const whatsappMessage =
+    contactData.whatsappMessage || "שלום! אני מעוניין באתר לעסק שלי";
 
   return (
-    <div className="floating-cta">
-      <div className={`cta-buttons ${isExpanded ? "expanded" : ""}`}>
-        <a
-          href={`tel:${phone}`}
-          className="cta-button phone"
-          title="התקשרו אלינו"
-        >
-          <i className="fa fa-phone"></i>
-          <span className="cta-text">התקשרו</span>
-        </a>
+    <div className="fixed bottom-6 left-6 z-50">
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            transition={{ duration: 0.3 }}
+            className="mb-4 space-y-3"
+          >
+            <motion.a
+              href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(
+                whatsappMessage
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-3 rounded-full shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <MessageCircle className="w-5 h-5 ml-3" />
+              <span className="font-semibold">ווטסאפ</span>
+            </motion.a>
 
-        <a
-          href={`https://wa.me/${phone}`}
-          className="cta-button whatsapp"
-          title="שלחו הודעה בווטסאפ"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i className="fa fa-whatsapp"></i>
-          <span className="cta-text">ווטסאפ</span>
-        </a>
+            <motion.a
+              href={`tel:${phone}`}
+              className="flex items-center bg-gray-700 hover:bg-gray-600 text-yellow-400 px-4 py-3 rounded-full shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Phone className="w-5 h-5 ml-3" />
+              <span className="font-semibold">התקשרו</span>
+            </motion.a>
 
-        <a
-          href={`mailto:${email}`}
-          className="cta-button email"
-          title="שלחו מייל"
-        >
-          <i className="fa fa-envelope"></i>
-          <span className="cta-text">מייל</span>
-        </a>
-      </div>
+            <motion.a
+              href={`mailto:${email}`}
+              className="flex items-center bg-gray-700 hover:bg-gray-600 text-yellow-400 px-4 py-3 rounded-full shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Mail className="w-5 h-5 ml-3" />
+              <span className="font-semibold">מייל</span>
+            </motion.a>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      <button
-        className="cta-toggle"
+      <motion.button
         onClick={toggleExpanded}
-        title={isExpanded ? "סגור" : "צור קשר"}
+        className="w-14 h-14 bg-yellow-500 hover:bg-yellow-600 text-black rounded-full shadow-lg flex items-center justify-center transition-all duration-300"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        aria-label={isExpanded ? "סגור תפריט קשר" : "פתח תפריט קשר"}
       >
-        <i className={`fa ${isExpanded ? "fa-times" : "fa-comments"}`}></i>
-      </button>
+        <motion.div
+          animate={{ rotate: isExpanded ? 45 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {isExpanded ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Plus className="w-6 h-6" />
+          )}
+        </motion.div>
+      </motion.button>
     </div>
   );
 };

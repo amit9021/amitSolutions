@@ -1,22 +1,107 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
-
 import { About } from "./components/about";
 import { Services } from "./components/services";
+import { Shop } from "./components/shop";
 import { Gallery } from "./components/gallery";
-
 import { Testimonials } from "./components/testimonials";
 import { Contact } from "./components/contact";
 import { Footer } from "./components/footer";
 import { CTA } from "./components/cta";
 import JsonData from "./data/data.json";
-import SmoothScroll from "smooth-scroll";
 
-export const scroll = new SmoothScroll('a[href*="#"]', {
-  speed: 1000,
-  speedAsDuration: true,
-});
+// SEO Component
+const SEO = ({ data }) => {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: data?.companyName || "Amit Solutions",
+    description: data?.tagline || "אתרים מהירים שמביאים פניות",
+    url: data?.website || "https://amitsolutions.co.il",
+    telephone: data?.phone || "+972-50-000-0000",
+    email: data?.email || "amit@amitsolutions.co.il",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "IL",
+      addressRegion: "ישראל",
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "ישראל",
+    },
+    serviceType: "אתרי תדמית לעסקים קטנים",
+    priceRange: "₪₪₪",
+  };
+
+  return (
+    <Helmet>
+      <html lang="he" dir="rtl" />
+      <title>
+        {data?.title || "Amit Solutions"} -{" "}
+        {data?.tagline || "אתרים מהירים שמביאים פניות"}
+      </title>
+      <meta
+        name="description"
+        content={
+          data?.paragraph ||
+          "אתרי תדמית מהירים ומותאמים למובייל לעסקים קטנים ובעלי מקצוע. חיבור Google Business, SEO בסיסי, וואטסאפ בלחיצה."
+        }
+      />
+      <meta
+        name="keywords"
+        content="אתר תדמית, אתר לעסק, Google Business, SEO, וואטסאפ, עסקים קטנים, חשמלאי, אינסטלטור, HVAC"
+      />
+      <meta name="author" content="Amit Solutions" />
+      <meta name="robots" content="index, follow" />
+
+      {/* Open Graph */}
+      <meta property="og:type" content="website" />
+      <meta
+        property="og:title"
+        content={`${data?.title || "Amit Solutions"} - ${
+          data?.tagline || "אתרים מהירים שמביאים פניות"
+        }`}
+      />
+      <meta
+        property="og:description"
+        content={
+          data?.paragraph ||
+          "אתרי תדמית מהירים ומותאמים למובייל לעסקים קטנים ובעלי מקצוע."
+        }
+      />
+      <meta
+        property="og:url"
+        content={data?.website || "https://amitsolutions.co.il"}
+      />
+      <meta
+        property="og:site_name"
+        content={data?.companyName || "Amit Solutions"}
+      />
+      <meta property="og:locale" content="he_IL" />
+
+      {/* Twitter Card */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta
+        name="twitter:title"
+        content={`${data?.title || "Amit Solutions"} - ${
+          data?.tagline || "אתרים מהירים שמביאים פניות"
+        }`}
+      />
+      <meta
+        name="twitter:description"
+        content={
+          data?.paragraph ||
+          "אתרי תדמית מהירים ומותאמים למובייל לעסקים קטנים ובעלי מקצוע."
+        }
+      />
+
+      {/* JSON-LD */}
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+    </Helmet>
+  );
+};
 
 const App = () => {
   const [landingPageData, setLandingPageData] = useState({});
@@ -25,79 +110,23 @@ const App = () => {
     setLandingPageData(JsonData);
   }, []);
 
-  useEffect(() => {
-    // Manual scroll handler for navigation highlighting
-    const handleScroll = () => {
-      const sections = [
-        "#features",
-        "#about",
-        "#services",
-        "#portfolio",
-        "#shop",
-        "#testimonials",
-        "#contact",
-      ];
-
-      let currentSection = "";
-      let minDistance = Infinity;
-
-      sections.forEach((section) => {
-        const element = document.querySelector(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          const distance = Math.abs(rect.top - 100);
-
-          // Check if section is in viewport
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            if (distance < minDistance) {
-              minDistance = distance;
-              currentSection = section;
-            }
-          }
-        }
-      });
-
-      // If we found a section in view, highlight it
-      if (currentSection) {
-        // Remove active class from all nav items
-        document.querySelectorAll("#menu .navbar-nav a").forEach((link) => {
-          link.parentElement.classList.remove("active");
-        });
-
-        // Add active class to current section's nav item
-        const navLink = document.querySelector(
-          `#menu .navbar-nav a[href="${currentSection}"]`
-        );
-        if (navLink) {
-          navLink.parentElement.classList.add("active");
-        }
-      }
-    };
-
-    // Add scroll listener
-    window.addEventListener("scroll", handleScroll);
-
-    // Initial call to set active state on page load
-    const timer = setTimeout(handleScroll, 100);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <div className="rtl" dir="rtl">
-      <Navigation data={landingPageData.Contact} />
+      <SEO data={landingPageData.Footer} />
+      <Navigation
+        data={landingPageData.Contact}
+        logo={landingPageData.Header?.logo}
+        companyName={landingPageData.Header?.title}
+        menuItems={landingPageData.Navigation?.menuItems}
+      />
       <Header data={landingPageData.Header} />
-
       <About data={landingPageData.About} />
       <Services data={landingPageData.Services} />
+      <Shop data={landingPageData.Contact} />
       <Gallery />
-
       <Testimonials data={landingPageData.Testimonials} />
       <Contact data={landingPageData.Contact} />
-      <Footer />
+      <Footer data={landingPageData.Footer} />
       <CTA data={landingPageData.Contact} />
     </div>
   );

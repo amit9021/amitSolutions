@@ -1,15 +1,70 @@
+/* Tailwind CSS is loaded via CDN */
+
+/* Color Palette Variables */
+:root {
+  --color-primary: #fbbf24; /* yellow-400 */
+  --color-primary-dark: #f59e0b; /* yellow-500 */
+  --color-primary-darker: #d97706; /* yellow-600 */
+  --color-primary-darkest: #b45309; /* yellow-700 */
+  
+  --color-secondary: #000000; /* black */
+  --color-secondary-light: #111827; /* gray-900 */
+  --color-secondary-lighter: #1f2937; /* gray-800 */
+  --color-secondary-lightest: #374151; /* gray-700 */
+  
+  --color-text-primary: #ffffff; /* white */
+  --color-text-secondary: #d1d5db; /* gray-300 */
+  --color-text-muted: #9ca3af; /* gray-400 */
+  
+  --color-bg-primary: #000000; /* black */
+  --color-bg-secondary: #111827; /* gray-900 */
+  --color-bg-tertiary: #1f2937; /* gray-800 */
+  
+  --color-accent: #fbbf24; /* yellow-400 */
+  --color-accent-dark: #f59e0b; /* yellow-500 */
+}
+
 body {
   margin: 0;
-  font-family: "Open Sans",
-    sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   direction: rtl;
-  text-align: center;
-  
+  text-align: right;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Custom RTL styles */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
 }

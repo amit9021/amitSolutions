@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/yabat/static/css/main.dfd7ae02.css",
-    "main.js": "/yabat/static/js/main.f9d38df0.js",
-    "index.html": "/yabat/index.html",
-    "main.dfd7ae02.css.map": "/yabat/static/css/main.dfd7ae02.css.map",
-    "main.f9d38df0.js.map": "/yabat/static/js/main.f9d38df0.js.map"
+    "main.css": "./static/css/main.16443dc8.css",
+    "main.js": "./static/js/main.753c3cbc.js",
+    "index.html": "./index.html",
+    "main.16443dc8.css.map": "./static/css/main.16443dc8.css.map",
+    "main.753c3cbc.js.map": "./static/js/main.753c3cbc.js.map"
   },
   "entrypoints": [
-    "static/css/main.dfd7ae02.css",
-    "static/js/main.f9d38df0.js"
+    "static/css/main.16443dc8.css",
+    "static/js/main.753c3cbc.js"
   ]
 }
