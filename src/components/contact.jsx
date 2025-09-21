@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { MessageCircle, Phone, Mail, MapPin, Send } from "lucide-react";
+import { trackFormSubmission, trackWhatsAppClick, trackPhoneClick } from "../utils/analytics";
 
 const initialState = {
   name: "",
@@ -26,6 +27,9 @@ export const Contact = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Track form submission
+    trackFormSubmission('contact_form');
+
     // Create WhatsApp message
     const whatsappMessage = `שלום עמית,
 
@@ -44,6 +48,9 @@ ${message}
     const whatsappUrl = `https://wa.me/${whatsapp}?text=${encodeURIComponent(
       whatsappMessage
     )}`;
+
+    // Track WhatsApp click
+    trackWhatsAppClick('contact_form');
 
     // Open WhatsApp
     window.open(whatsappUrl, "_blank");
@@ -194,6 +201,7 @@ ${message}
                     <a
                       href={`tel:${phone}`}
                       className="text-yellow-400 hover:text-yellow-500"
+                      onClick={() => trackPhoneClick('contact_info')}
                     >
                       {phone}
                     </a>
@@ -214,6 +222,7 @@ ${message}
                       className="text-yellow-400 hover:text-yellow-500"
                       target="_blank"
                       rel="noreferrer"
+                      onClick={() => trackWhatsAppClick('contact_info')}
                     >
                       שלח הודעה
                     </a>

@@ -11,6 +11,7 @@ import { Contact } from "./components/contact";
 import { Footer } from "./components/footer";
 import { CTA } from "./components/cta";
 import JsonData from "./data/data.json";
+import { trackPageView, trackScrollDepth } from "./utils/analytics";
 
 // SEO Component
 const SEO = ({ data }) => {
@@ -108,6 +109,32 @@ const App = () => {
 
   useEffect(() => {
     setLandingPageData(JsonData);
+    
+    // Track page view
+    trackPageView(window.location.pathname);
+    
+    // Track scroll depth
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.round((scrollTop / scrollHeight) * 100);
+      
+      if (scrollPercent >= 25 && scrollPercent < 50) {
+        trackScrollDepth(25);
+      } else if (scrollPercent >= 50 && scrollPercent < 75) {
+        trackScrollDepth(50);
+      } else if (scrollPercent >= 75 && scrollPercent < 90) {
+        trackScrollDepth(75);
+      } else if (scrollPercent >= 90) {
+        trackScrollDepth(90);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
