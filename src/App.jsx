@@ -109,16 +109,18 @@ const App = () => {
 
   useEffect(() => {
     setLandingPageData(JsonData);
-    
+
     // Track page view
     trackPageView(window.location.pathname);
-    
+
     // Track scroll depth
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = Math.round((scrollTop / scrollHeight) * 100);
-      
+
       if (scrollPercent >= 25 && scrollPercent < 50) {
         trackScrollDepth(25);
       } else if (scrollPercent >= 50 && scrollPercent < 75) {
@@ -129,11 +131,11 @@ const App = () => {
         trackScrollDepth(90);
       }
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    
+
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
