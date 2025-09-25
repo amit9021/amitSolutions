@@ -2,15 +2,15 @@ import { motion } from "framer-motion";
 import { MessageCircle, Phone, Mail, MapPin, ExternalLink } from "lucide-react";
 
 export const Footer = (props) => {
-  const footerData = props.data || {};
-  const companyName = footerData.companyName || "Amit Solutions";
-  const website = footerData.website || "https://amitsolutions.co.il";
-  const copyrightYear = footerData.copyrightYear || new Date().getFullYear();
-  const tagline = footerData.tagline || "אתרים מהירים שמביאים פניות";
-  const serviceArea = footerData.serviceArea || "ישראל (התמקדות בדרום/מרכז)";
-  const phone = footerData.phone || "+972-50-000-0000";
-  const whatsapp = footerData.whatsapp || "+972500000000";
-  const email = footerData.email || "amit@amitsolutions.co.il";
+  const contactData = props.data || {};
+  const companyName = "Amit Solutions";
+  const website = "https://amitsolutions.co.il";
+  const copyrightYear = new Date().getFullYear();
+  const tagline = "אתרים מהירים שמביאים פניות";
+  const serviceArea = contactData.serviceArea || "ישראל (התמקדות בדרום/מרכז)";
+  const phone = contactData.phone || "+972-54-792-6661";
+  const whatsapp = contactData.whatsapp || "+972547926661";
+  const email = contactData.email || "amit@amitsolutions.co.il";
 
   return (
     <footer className="bg-black text-white">

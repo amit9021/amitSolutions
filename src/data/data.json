@@ -4,9 +4,9 @@
     "tagline": "אתרים מהירים שמביאים פניות",
     "paragraph": "אתרי תדמית מהירים ומותאמים למובייל לעסקים קטנים ובעלי מקצוע. חיבור Google Business, SEO בסיסי, וואטסאפ בלחיצה - הכל במחיר הוגן ובזמן קצר.",
     "logo": "./img/logo.jpg",
-    "backgroundImage": "./img/intro-bg.webp",
-    "phone": "+972-50-000-0000",
-    "whatsapp": "+972500000000",
+    "backgroundImage": "./img/hero.jpeg",
+    "phone": "+972-54-792-6661",
+    "whatsapp": "+972547926661",
     "whatsappMessage": "שלום! אני מעוניין באתר לעסק שלי"
   },
   "Navigation": {
@@ -132,50 +132,7 @@
       "business": "אינסטלטורית"
     }
   ],
-  "Pricing": [
-    {
-      "name": "סטארטר",
-      "price": "2,500",
-      "currency": "₪",
-      "period": "חד פעמי",
-      "features": [
-        "אתר תדמית מהיר",
-        "עיצוב מותאם למובייל",
-        "חיבור וואטסאפ",
-        "SEO בסיסי",
-        "העלאה לאוויר"
-      ],
-      "popular": false
-    },
-    {
-      "name": "עסק גדל",
-      "price": "3,500",
-      "currency": "₪",
-      "period": "חד פעמי",
-      "features": [
-        "כל מה שבסטארטר",
-        "Google Business Profile",
-        "Google Analytics",
-        "Facebook Pixel",
-        "תמיכה חודשית"
-      ],
-      "popular": true
-    },
-    {
-      "name": "פלוס",
-      "price": "4,500",
-      "currency": "₪",
-      "period": "חד פעמי",
-      "features": [
-        "כל מה שבעסק גדל",
-        "עיצוב מתקדם",
-        "טופס לידים",
-        "תחזוקה חודשית",
-        "עדכונים ללא הגבלה"
-      ],
-      "popular": false
-    }
-  ],
+
   "FAQ": [
     {
       "question": "כמה זמן לוקח להקים אתר?",
@@ -221,10 +178,10 @@
     }
   ],
   "Contact": {
-    "phone": "+972-50-000-0000",
-    "whatsapp": "+972500000000",
+    "phone": "+972-54-792-6661",
+    "whatsapp": "+972547926661",
     "whatsappMessage": "שלום! אני מעוניין באתר לעסק שלי",
-    "email": "amit@amitsolutions.co.il",
+    "email": "amit9021@gmail.com",
     "serviceArea": "ישראל (התמקדות בדרום/מרכז)"
   },
   "Footer": {

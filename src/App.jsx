@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
+import "./App.css";
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
 import { About } from "./components/about";
@@ -152,10 +153,10 @@ const App = () => {
       <About data={landingPageData.About} />
       <Services data={landingPageData.Services} />
       <Shop data={landingPageData.Contact} />
-      <Gallery />
-      <Testimonials data={landingPageData.Testimonials} />
+      {/* <Gallery /> */}
+      {/* <Testimonials data={landingPageData.Testimonials} /> */}
       <Contact data={landingPageData.Contact} />
-      <Footer data={landingPageData.Footer} />
+      <Footer data={landingPageData.Contact} />
       <CTA data={landingPageData.Contact} />
     </div>
   );

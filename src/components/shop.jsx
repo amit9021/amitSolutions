@@ -11,81 +11,29 @@ import {
 export const Shop = (props) => {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
   const contactData = props.data || {};
-  const phone = contactData.phone || "+972-50-000-0000";
-  const whatsapp = contactData.whatsapp || "+972500000000";
+  const phone = contactData.phone || "+972-54-792-6661";
+  const whatsapp = contactData.whatsapp || "+972547926661";
 
-  // גלריית שירותים
+  // חבילת שירותים
   const products = [
     {
       id: 1,
-      title: "אתר תדמית בסיסי",
-      description:
-        "אתר תדמית מהיר ומותאם למובייל עם דף בית, אודות, שירותים וצור קשר",
-      price: "₪2,500",
+      title: "אתר תדמית לעסק",
+      description: "אתר תדמית מהיר ומותאם למובייל - מחיר החל מ-₪1,500",
+      price: "החל מ-₪1,500",
       features: [
-        "עיצוב רספונסיבי",
-        "טעינה מהירה",
-        "SEO בסיסי",
-        "ווטסאפ בלחיצה",
-      ],
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
-      paymentUrl: `tel:${phone}`,
-    },
-    {
-      id: 2,
-      title: "אתר תדמית מתקדם",
-      description: "אתר תדמית מקצועי עם גלריה, המלצות, בלוג וכלי ניהול מתקדמים",
-      price: "₪4,500",
-      features: ["גלריית תמונות", "מערכת המלצות", "בלוג", "ניהול תוכן"],
-      image:
-        "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
-      paymentUrl: `tel:${phone}`,
-    },
-    {
-      id: 3,
-      title: "אתר עסק מקומי",
-      description:
-        "אתר לעסק מקומי עם חיבור Google Business, מפות, שעות פעילות ועוד",
-      price: "₪3,200",
-      features: [
-        "Google Business",
-        "מפות אינטראקטיביות",
-        "שעות פעילות",
+        "עיצוב רספונסיבי (מותאם למובייל)",
+        "4-6 דפים לפי הצורך",
+        "טעינה מהירה (תוך 2-3 שניות)",
+        "כפתור ווטסאפ בלחיצה",
+        "חיבור Google Business",
+        "SEO בסיסי לגוגל",
+        "גלריית תמונות (אופציונלי)",
+        "דף המלצות (אופציונלי)",
+        "מפת Google",
         "טופס יצירת קשר",
+        "תמיכה למשך חודש",
       ],
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
-      paymentUrl: `tel:${phone}`,
-    },
-    {
-      id: 4,
-      title: "חנות מקוונת",
-      description: "חנות מקוונת מלאה עם קטלוג מוצרים, עגלת קניות ותשלום מקוון",
-      price: "₪6,800",
-      features: ["קטלוג מוצרים", "עגלת קניות", "תשלום מקוון", "ניהול הזמנות"],
-      image:
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&h=300&fit=crop",
-      paymentUrl: `tel:${phone}`,
-    },
-    {
-      id: 5,
-      title: "אתר פורטל",
-      description:
-        "פורטל עסקי מתקדם עם מערכת משתמשים, דשבורד וכלי ניהול מתקדמים",
-      price: "₪8,500",
-      features: ["מערכת משתמשים", "דשבורד ניהול", "דוחות מתקדמים", "API מותאם"],
-      image:
-        "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop",
-      paymentUrl: `tel:${phone}`,
-    },
-    {
-      id: 6,
-      title: "ייעוץ ופיתוח מותאם",
-      description:
-        "ייעוץ מקצועי ופיתוח מותאם אישית לפי הצרכים הספציפיים של העסק",
-      price: "₪150/שעה",
-      features: ["ייעוץ מקצועי", "פיתוח מותאם", "תמיכה טכנית", "הדרכה מלאה"],
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
       paymentUrl: `tel:${phone}`,
@@ -131,23 +79,6 @@ export const Shop = (props) => {
         {/* Product Carousel */}
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            {/* Navigation Buttons */}
-            <button
-              onClick={prevProduct}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-yellow-500 rounded-full shadow-lg flex items-center justify-center hover:bg-yellow-600 transition-colors"
-              aria-label="שירות קודם"
-            >
-              <ChevronRight className="w-6 h-6 text-black" />
-            </button>
-
-            <button
-              onClick={nextProduct}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-yellow-500 rounded-full shadow-lg flex items-center justify-center hover:bg-yellow-600 transition-colors"
-              aria-label="שירות הבא"
-            >
-              <ChevronLeft className="w-6 h-6 text-black" />
-            </button>
-
             {/* Current Product */}
             <AnimatePresence mode="wait">
               <motion.div
@@ -171,17 +102,6 @@ export const Shop = (props) => {
 
                   {/* Content */}
                   <div className="p-8 flex flex-col justify-center">
-                    <div className="flex items-center mb-4">
-                      <div className="flex text-yellow-400">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-current" />
-                        ))}
-                      </div>
-                      <span className="text-sm text-gray-500 mr-2">
-                        5.0 (12 ביקורות)
-                      </span>
-                    </div>
-
                     <h3 className="text-3xl font-bold text-white mb-4">
                       {products[currentProductIndex].title}
                     </h3>
