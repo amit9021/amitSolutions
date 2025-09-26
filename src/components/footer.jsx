@@ -4,7 +4,7 @@ import { MessageCircle, Phone, Mail, MapPin, ExternalLink } from "lucide-react";
 export const Footer = (props) => {
   const contactData = props.data || {};
   const companyName = "Amit Solutions";
-  const website = "https://amitsolutions.co.il";
+  const website = "https://amit-solutions.co.il";
   const copyrightYear = new Date().getFullYear();
   const tagline = "אתרים מהירים שמביאים פניות";
   const serviceArea = contactData.serviceArea || "ישראל (התמקדות בדרום/מרכז)";

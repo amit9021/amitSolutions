@@ -21,7 +21,7 @@ const SEO = ({ data }) => {
     "@type": "LocalBusiness",
     name: data?.companyName || "Amit Solutions",
     description: data?.tagline || "אתרים מהירים שמביאים פניות",
-    url: data?.website || "https://amitsolutions.co.il",
+    url: data?.website || "https://amit-solutions.co.il",
     telephone: data?.phone || "+972-50-000-0000",
     email: data?.email || "amit@amitsolutions.co.il",
     address: {
@@ -75,7 +75,7 @@ const SEO = ({ data }) => {
       />
       <meta
         property="og:url"
-        content={data?.website || "https://amitsolutions.co.il"}
+        content={data?.website || "https://amit-solutions.co.il"}
       />
       <meta
         property="og:site_name"
