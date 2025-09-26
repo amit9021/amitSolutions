@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ImageViewer from "react-simple-image-viewer";
 import { ExternalLink, Clock } from "lucide-react";
@@ -11,10 +11,10 @@ export const Gallery = (props) => {
   const galleryData = data.Portfolio || [];
   const images = galleryData.map((item) => item.image || item.large);
 
-  const openImageViewer = useCallback((index) => {
-    setCurrentImage(index);
-    setIsViewerOpen(true);
-  }, []);
+  // const openImageViewer = useCallback((index) => {
+  //   setCurrentImage(index);
+  //   setIsViewerOpen(true);
+  // }, []);
 
   const closeImageViewer = () => {
     setCurrentImage(0);

@@ -1,12 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Phone,
-  MessageCircle,
-  Star,
-} from "lucide-react";
+import { Phone, MessageCircle } from "lucide-react";
 
 export const Shop = (props) => {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
@@ -40,15 +34,15 @@ export const Shop = (props) => {
     },
   ];
 
-  const nextProduct = () => {
-    setCurrentProductIndex((prev) => (prev + 1) % products.length);
-  };
+  // const nextProduct = () => {
+  //   setCurrentProductIndex((prev) => (prev + 1) % products.length);
+  // };
 
-  const prevProduct = () => {
-    setCurrentProductIndex(
-      (prev) => (prev - 1 + products.length) % products.length
-    );
-  };
+  // const prevProduct = () => {
+  //   setCurrentProductIndex(
+  //     (prev) => (prev - 1 + products.length) % products.length
+  //   );
+  // };
 
   const goToProduct = (index) => {
     setCurrentProductIndex(index);
