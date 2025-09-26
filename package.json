@@ -7,7 +7,7 @@
     "lucide-react": "^0.544.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
+    "react-helmet-async": "^2.0.5",
     "react-scripts": "^5.0.1",
     "react-simple-image-viewer": "^0.0.8"
   },

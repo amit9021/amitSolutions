@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import "./App.css";
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
@@ -141,24 +141,26 @@ const App = () => {
   }, []);
 
   return (
-    <div className="rtl" dir="rtl">
-      <SEO data={landingPageData.Footer} />
-      <Navigation
-        data={landingPageData.Contact}
-        logo={landingPageData.Header?.logo}
-        companyName={landingPageData.Header?.title}
-        menuItems={landingPageData.Navigation?.menuItems}
-      />
-      <Header data={landingPageData.Header} />
-      <About data={landingPageData.About} />
-      <Services data={landingPageData.Services} />
-      <Shop data={landingPageData.Contact} />
-      {/* <Gallery /> */}
-      {/* <Testimonials data={landingPageData.Testimonials} /> */}
-      <Contact data={landingPageData.Contact} />
-      <Footer data={landingPageData.Contact} />
-      <CTA data={landingPageData.Contact} />
-    </div>
+    <HelmetProvider>
+      <div className="rtl" dir="rtl">
+        <SEO data={landingPageData.Footer} />
+        <Navigation
+          data={landingPageData.Contact}
+          logo={landingPageData.Header?.logo}
+          companyName={landingPageData.Header?.title}
+          menuItems={landingPageData.Navigation?.menuItems}
+        />
+        <Header data={landingPageData.Header} />
+        <About data={landingPageData.About} />
+        <Services data={landingPageData.Services} />
+        <Shop data={landingPageData.Contact} />
+        {/* <Gallery /> */}
+        {/* <Testimonials data={landingPageData.Testimonials} /> */}
+        <Contact data={landingPageData.Contact} />
+        <Footer data={landingPageData.Contact} />
+        <CTA data={landingPageData.Contact} />
+      </div>
+    </HelmetProvider>
   );
 };
 
