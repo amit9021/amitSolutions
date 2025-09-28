@@ -12,8 +12,12 @@ const posts = [
     publishedAt: "2024-12-18",
   },
   {
-    slug: "google-business-integration",
+    slug: "small-business-showcase-website-guide",
     publishedAt: "2024-12-17",
+  },
+  {
+    slug: "local-seo-israel-small-business",
+    publishedAt: "2024-12-16",
   },
 ];
 
