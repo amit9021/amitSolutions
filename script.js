@@ -31,6 +31,28 @@ async function init() {
   } catch (error) {
     console.error("❌ Error creating .nojekyll file:", error);
   }
+
+  // Copy .htaccess file for cache optimization
+  const htaccessSource = path.join("./public", ".htaccess");
+  const htaccessDest = path.join("./docs", ".htaccess");
+
+  try {
+    await promisify(fs.copy)(htaccessSource, htaccessDest);
+    console.log("✅ .htaccess file copied for cache optimization");
+  } catch (error) {
+    console.error("❌ Error copying .htaccess file:", error);
+  }
+
+  // Copy 404.html file for GitHub Pages SPA routing
+  const notFoundSource = path.join("./public", "404.html");
+  const notFoundDest = path.join("./docs", "404.html");
+
+  try {
+    await promisify(fs.copy)(notFoundSource, notFoundDest);
+    console.log("✅ 404.html file copied for GitHub Pages SPA routing");
+  } catch (error) {
+    console.error("❌ Error copying 404.html file:", error);
+  }
 }
 
 init();

@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font loading optimization */
+@font-face {
+  font-family: 'Open Sans';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Heebo';
+  font-display: swap;
+}
+
+/* Performance optimizations to prevent forced reflows */
+.motion-div {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize animations for better performance */
+[data-framer-motion] {
+  will-change: transform, opacity;
+}
+
+/* Prevent layout shifts during animations */
+.animate-fade-in {
+  will-change: opacity;
+}
+
+.animate-slide-up {
+  will-change: transform, opacity;
+}
+
 /* Color Palette Variables */
 :root {
   --color-primary: #fbbf24; /* yellow-400 */

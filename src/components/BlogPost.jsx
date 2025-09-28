@@ -31,6 +31,19 @@ export const BlogPost = () => {
   const [startTime] = useState(Date.now());
   const [scrollDepth, setScrollDepth] = useState(0);
 
+  // Scroll to top when component mounts (mobile-friendly)
+  useEffect(() => {
+    // Multiple methods to ensure scroll to top works on all devices
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    // For mobile Safari and other browsers
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+  }, []);
+
   // Track blog post view
   useEffect(() => {
     if (post) {
@@ -56,32 +69,47 @@ export const BlogPost = () => {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [post, startTime]);
 
-  // Track scroll depth
+  // Track scroll depth with throttling to prevent forced reflows
   useEffect(() => {
+    let ticking = false;
+    let lastScrollTop = 0;
+
     const handleScroll = () => {
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      const scrollHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const currentDepth = Math.round((scrollTop / scrollHeight) * 100);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
 
-      if (currentDepth > scrollDepth) {
-        setScrollDepth(currentDepth);
+          // Only calculate if scroll position changed significantly
+          if (Math.abs(scrollTop - lastScrollTop) > 10) {
+            const scrollHeight =
+              document.documentElement.scrollHeight - window.innerHeight;
+            const currentDepth = Math.round((scrollTop / scrollHeight) * 100);
 
-        // Track milestone scroll depths
-        if (currentDepth >= 25 && scrollDepth < 25) {
-          trackBlogScrollDepth(post?.slug, 25);
-        } else if (currentDepth >= 50 && scrollDepth < 50) {
-          trackBlogScrollDepth(post?.slug, 50);
-        } else if (currentDepth >= 75 && scrollDepth < 75) {
-          trackBlogScrollDepth(post?.slug, 75);
-        } else if (currentDepth >= 90 && scrollDepth < 90) {
-          trackBlogScrollDepth(post?.slug, 90);
-        }
+            if (currentDepth > scrollDepth) {
+              setScrollDepth(currentDepth);
+
+              // Track milestone scroll depths
+              if (currentDepth >= 25 && scrollDepth < 25) {
+                trackBlogScrollDepth(post?.slug, 25);
+              } else if (currentDepth >= 50 && scrollDepth < 50) {
+                trackBlogScrollDepth(post?.slug, 50);
+              } else if (currentDepth >= 75 && scrollDepth < 75) {
+                trackBlogScrollDepth(post?.slug, 75);
+              } else if (currentDepth >= 90 && scrollDepth < 90) {
+                trackBlogScrollDepth(post?.slug, 90);
+              }
+            }
+
+            lastScrollTop = scrollTop;
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [post?.slug, scrollDepth]);
 

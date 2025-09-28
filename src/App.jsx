@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
@@ -17,6 +22,25 @@ import { BlogPost } from "./components/BlogPost";
 import { BlogPreview } from "./components/BlogPreview";
 import JsonData from "./data/data.json";
 import { trackPageView, trackScrollDepth } from "./utils/analytics";
+
+// ScrollToTop Component for route changes
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Scroll to top on route change (mobile-friendly)
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    // For mobile Safari and other browsers
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 // SEO Component
 const SEO = ({ data }) => {
@@ -118,26 +142,46 @@ const App = () => {
     // Track page view
     trackPageView(window.location.pathname);
 
-    // Track scroll depth
-    const handleScroll = () => {
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      const scrollHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = Math.round((scrollTop / scrollHeight) * 100);
+    // Track scroll depth with throttling to prevent forced reflows
+    let ticking = false;
+    let lastScrollTop = 0;
+    let trackedDepths = new Set();
 
-      if (scrollPercent >= 25 && scrollPercent < 50) {
-        trackScrollDepth(25);
-      } else if (scrollPercent >= 50 && scrollPercent < 75) {
-        trackScrollDepth(50);
-      } else if (scrollPercent >= 75 && scrollPercent < 90) {
-        trackScrollDepth(75);
-      } else if (scrollPercent >= 90) {
-        trackScrollDepth(90);
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+
+          // Only calculate if scroll position changed significantly
+          if (Math.abs(scrollTop - lastScrollTop) > 50) {
+            const scrollHeight =
+              document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = Math.round((scrollTop / scrollHeight) * 100);
+
+            if (scrollPercent >= 25 && !trackedDepths.has(25)) {
+              trackScrollDepth(25);
+              trackedDepths.add(25);
+            } else if (scrollPercent >= 50 && !trackedDepths.has(50)) {
+              trackScrollDepth(50);
+              trackedDepths.add(50);
+            } else if (scrollPercent >= 75 && !trackedDepths.has(75)) {
+              trackScrollDepth(75);
+              trackedDepths.add(75);
+            } else if (scrollPercent >= 90 && !trackedDepths.has(90)) {
+              trackScrollDepth(90);
+              trackedDepths.add(90);
+            }
+
+            lastScrollTop = scrollTop;
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -172,6 +216,7 @@ const App = () => {
   return (
     <HelmetProvider>
       <Router>
+        <ScrollToTop />
         <div className="rtl" dir="rtl">
           <Routes>
             <Route path="/" element={<HomePage />} />
