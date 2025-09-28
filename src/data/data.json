@@ -11,13 +11,9 @@
   },
   "Navigation": {
     "menuItems": [
-      { "text": "למה לבחור בי", "href": "#features" },
       { "text": "שירותים", "href": "#services" },
       { "text": "חבילות", "href": "#shop" },
-      { "text": "תהליך עבודה", "href": "#process" },
-      { "text": "פורטפוליו", "href": "#portfolio" },
-      { "text": "מחירון", "href": "#pricing" },
-      { "text": "שאלות נפוצות", "href": "#faq" },
+
       { "text": "צור קשר", "href": "#contact" }
     ]
   },
