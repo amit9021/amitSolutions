@@ -8,8 +8,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.5",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.9.3",
     "react-scripts": "^5.0.1",
-    "react-simple-image-viewer": "^0.0.8"
+    "react-simple-image-viewer": "^0.0.8",
+    "remark-gfm": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,7 +20,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d docs"
+    "deploy": "gh-pages -d docs",
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "build-with-sitemap": "npm run generate-sitemap && npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { MessageCircle, ChevronRight, Zap } from "lucide-react";
+import { MessageCircle, ChevronRight, Zap, BookOpen } from "lucide-react";
+import { Link } from "react-router-dom";
+import { trackBlogNavigation } from "../utils/analytics";
 
 export const Header = (props) => {
   const data = props.data || {};
@@ -79,6 +81,25 @@ export const Header = (props) => {
                 <span>השירות שלי</span>
                 <ChevronRight className="w-5 h-5" />
               </motion.a>
+            </div>
+
+            <div className="flex justify-center mt-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+              >
+                <Link
+                  to="/blog"
+                  className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors"
+                  onClick={() =>
+                    trackBlogNavigation("view_blog", "hero_section")
+                  }
+                >
+                  <BookOpen className="w-5 h-5 ml-2" />
+                  <span>קרא את הבלוג שלנו</span>
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         </div>

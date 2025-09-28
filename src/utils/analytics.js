@@ -55,3 +55,50 @@ export const trackScrollDepth = (depth) => {
 export const trackTimeOnPage = (timeInSeconds) => {
   trackEvent("timing", "engagement", "time_on_page", timeInSeconds);
 };
+
+// Blog Analytics Functions
+
+// Track blog post views
+export const trackBlogPostView = (postTitle, postSlug) => {
+  trackEvent("view", "blog", postTitle, postSlug);
+};
+
+// Track blog index page views
+export const trackBlogIndexView = () => {
+  trackEvent("view", "blog", "blog_index");
+};
+
+// Track blog post reading time
+export const trackBlogReadingTime = (postSlug, timeInSeconds) => {
+  trackEvent("timing", "blog", `reading_time_${postSlug}`, timeInSeconds);
+};
+
+// Track blog post engagement (scroll depth)
+export const trackBlogScrollDepth = (postSlug, depth) => {
+  trackEvent("scroll", "blog", `scroll_depth_${postSlug}`, depth);
+};
+
+// Track blog navigation clicks
+export const trackBlogNavigation = (action, source) => {
+  trackEvent("click", "blog_navigation", action, source);
+};
+
+// Track blog post shares (if you add sharing functionality)
+export const trackBlogShare = (postSlug, platform) => {
+  trackEvent("share", "blog", postSlug, platform);
+};
+
+// Track blog search (if you add search functionality)
+export const trackBlogSearch = (searchTerm) => {
+  trackEvent("search", "blog", searchTerm);
+};
+
+// Track blog tag clicks
+export const trackBlogTagClick = (tagName, postSlug) => {
+  trackEvent("click", "blog_tag", tagName, postSlug);
+};
+
+// Track blog post completion (user read entire post)
+export const trackBlogPostCompletion = (postSlug, timeSpent) => {
+  trackEvent("complete", "blog", postSlug, timeSpent);
+};

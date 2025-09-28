@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
@@ -11,6 +12,9 @@ import { Shop } from "./components/shop";
 import { Contact } from "./components/contact";
 import { Footer } from "./components/footer";
 import { CTA } from "./components/cta";
+import { BlogIndex } from "./components/BlogIndex";
+import { BlogPost } from "./components/BlogPost";
+import { BlogPreview } from "./components/BlogPreview";
 import JsonData from "./data/data.json";
 import { trackPageView, trackScrollDepth } from "./utils/analytics";
 
@@ -140,9 +144,10 @@ const App = () => {
     };
   }, []);
 
-  return (
-    <HelmetProvider>
-      <div className="rtl" dir="rtl">
+  // HomePage Component
+  const HomePage = () => {
+    return (
+      <>
         <SEO data={landingPageData.Footer} />
         <Navigation
           data={landingPageData.Contact}
@@ -153,13 +158,28 @@ const App = () => {
         <Header data={landingPageData.Header} />
         <About data={landingPageData.About} />
         <Services data={landingPageData.Services} />
+        <BlogPreview />
         <Shop data={landingPageData.Contact} />
         {/* <Gallery /> */}
         {/* <Testimonials data={landingPageData.Testimonials} /> */}
         <Contact data={landingPageData.Contact} />
         <Footer data={landingPageData.Contact} />
         <CTA data={landingPageData.Contact} />
-      </div>
+      </>
+    );
+  };
+
+  return (
+    <HelmetProvider>
+      <Router>
+        <div className="rtl" dir="rtl">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/blog" element={<BlogIndex />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+          </Routes>
+        </div>
+      </Router>
     </HelmetProvider>
   );
 };

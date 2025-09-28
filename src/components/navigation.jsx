@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { MessageCircle, Phone, Menu, X } from "lucide-react";
 
 export const Navigation = (props) => {
@@ -34,6 +35,12 @@ export const Navigation = (props) => {
                 {item.text}
               </a>
             ))}
+            <Link
+              to="/blog"
+              className="text-gray-300 hover:text-yellow-400 transition-colors"
+            >
+              בלוג
+            </Link>
           </div>
 
           {/* Right side buttons */}
@@ -85,6 +92,13 @@ export const Navigation = (props) => {
                   {item.text}
                 </a>
               ))}
+              <Link
+                to="/blog"
+                className="block px-4 py-2 text-gray-300 hover:bg-yellow-500/20 hover:text-yellow-400 rounded-lg transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                בלוג
+              </Link>
             </div>
           </div>
         )}
