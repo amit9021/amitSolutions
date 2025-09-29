@@ -9,6 +9,36 @@
   <meta name="author" content="עמית">
   <link rel="canonical" href="https://amit-solutions.co.il/blog/">
   
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JYJF8SBNR9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JYJF8SBNR9', {
+      send_page_view: true
+    });
+    
+    // Track blog index engagement
+    gtag('event', 'blog_index_view', {
+      'event_category': 'blog',
+      'event_label': 'blog_index'
+    });
+    
+    // Track blog post clicks
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('a[href*="/blog/"]')) {
+        const link = e.target.closest('a[href*="/blog/"]');
+        const postSlug = link.href.split('/blog/')[1].replace('/', '');
+        gtag('event', 'blog_post_click', {
+          'event_category': 'blog',
+          'event_label': postSlug,
+          'transport_type': 'beacon'
+        });
+      }
+    });
+  </script>
+  
   <!-- Open Graph -->
   <meta property="og:title" content="בלוג - Amit Solutions">
   <meta property="og:description" content="טיפים ומדריכים לפיתוח אתרים, קידום אתרים SEO, ועיצוב אתרים מקצועי.">
@@ -23,11 +53,11 @@
   <meta name="twitter:image" content="https://amit-solutions.co.il/img/logo.webp">
   
   <!-- Preload critical resources -->
-  <link rel="preload" href="/static/css/main.c26980cd.css" as="style">
-  <link rel="preload" href="/static/js/main.255395b8.js" as="script">
+  <link rel="preload" href="/static/css/main.ffa751be.css" as="style">
+  <link rel="preload" href="/static/js/main.89fc21f3.js" as="script">
   
   <!-- Styles -->
-  <link rel="stylesheet" href="/static/css/main.c26980cd.css">
+  <link rel="stylesheet" href="/static/css/main.ffa751be.css">
 </head>
 <body>
   <div id="root">
@@ -220,7 +250,7 @@
           
             <article class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-yellow-400 transition-colors">
               <div class="aspect-video bg-gray-800 relative">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1470&auto=format&fit=crop" alt="אתרי וויקס ואלמנטור לעומת בנייה מקצועית: מה באמת עדיף לעסק קטן?" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop" alt="אתרי וויקס ואלמנטור לעומת בנייה מקצועית: מה באמת עדיף לעסק קטן?" class="w-full h-full object-cover">
               </div>
               <div class="p-6">
                 <div class="flex items-center text-sm text-gray-400 mb-3">
@@ -280,13 +310,172 @@
               </div>
             </article>
           
+            <article class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-yellow-400 transition-colors">
+              <div class="aspect-video bg-gray-800 relative">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1470&auto=format&fit=crop" alt="10 טעויות נפוצות שבעלי עסקים עושים באתר שלהם (ואיך לתקן אותן)" class="w-full h-full object-cover">
+              </div>
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-400 mb-3">
+                  <svg class="w-4 h-4 ml-2 rtl:ml-0 rtl:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <time>10.2.2025</time>
+                  <span class="mx-2">•</span>
+                  <svg class="w-4 h-4 ml-2 rtl:ml-0 rtl:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span>8 דקות קריאה</span>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-3 line-clamp-2">10 טעויות נפוצות שבעלי עסקים עושים באתר שלהם (ואיך לתקן אותן)</h3>
+                <p class="text-gray-300 mb-4 line-clamp-3">בעלי עסקים רבים משקיעים באתר, אך נופלים באותן טעויות שמונעות מהאתר להביא לקוחות. במאמר הזה נציג את 10 הטעויות הנפוצות ביותר – ונראה איך לתקן אותן בקלות.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">בניית אתרים</span><span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">עסקים קטנים</span><span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">טעויות נפוצות</span><span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">שיווק דיגיטלי</span>
+                </div>
+                <a href="/blog/10-common-website-mistakes-small-businesses/" class="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors font-medium">
+                  <span>קרא עוד</span>
+                  <svg class="w-4 h-4 mr-2 rtl:mr-0 rtl:ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 19-7-7 7-7"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5"></path>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          
+            <article class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-yellow-400 transition-colors">
+              <div class="aspect-video bg-gray-800 relative">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1470&auto=format&fit=crop" alt="מה זה CTA (Call to Action) ולמה הוא קריטי להצלחת האתר שלך?" class="w-full h-full object-cover">
+              </div>
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-400 mb-3">
+                  <svg class="w-4 h-4 ml-2 rtl:ml-0 rtl:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <time>15.2.2025</time>
+                  <span class="mx-2">•</span>
+                  <svg class="w-4 h-4 ml-2 rtl:ml-0 rtl:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span>6 דקות קריאה</span>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-3 line-clamp-2">מה זה CTA (Call to Action) ולמה הוא קריטי להצלחת האתר שלך?</h3>
+                <p class="text-gray-300 mb-4 line-clamp-3">CTA הוא אחד האלמנטים החשובים ביותר באתר שלך, אבל רוב בעלי העסקים לא יודעים איך להשתמש בו נכון. במאמר הזה נסביר מה זה CTA, איך ליצור אותו, ואיך להפוך אותו לכלי מכירה חזק.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">CTA</span><span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">שיווק דיגיטלי</span><span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">מכירות</span><span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">אתרי אינטרנט</span>
+                </div>
+                <a href="/blog/what-is-cta-call-to-action/" class="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors font-medium">
+                  <span>קרא עוד</span>
+                  <svg class="w-4 h-4 mr-2 rtl:mr-0 rtl:ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 19-7-7 7-7"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5"></path>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          
+            <article class="bg-gray-900 rounded-xl overflow-hidden border border-gray-800 hover:border-yellow-400 transition-colors">
+              <div class="aspect-video bg-gray-800 relative">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop" alt="איך לעקוב אחר התנועה באתר שלך: מדריך מלא לאנליטיקס ופיקסלים" class="w-full h-full object-cover">
+              </div>
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-400 mb-3">
+                  <svg class="w-4 h-4 ml-2 rtl:ml-0 rtl:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <time>20.2.2025</time>
+                  <span class="mx-2">•</span>
+                  <svg class="w-4 h-4 ml-2 rtl:ml-0 rtl:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span>9 דקות קריאה</span>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-3 line-clamp-2">איך לעקוב אחר התנועה באתר שלך: מדריך מלא לאנליטיקס ופיקסלים</h3>
+                <p class="text-gray-300 mb-4 line-clamp-3">בלי מעקב אחר התנועה באתר, אתם עובדים בעיוורון. במדריך הזה נסביר איך להתקין Google Analytics, Facebook Pixel, ולעקוב אחר כל הפעולות החשובות באתר שלכם.</p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">אנליטיקס</span><span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Google Analytics</span><span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">Facebook Pixel</span><span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">מעקב תנועה</span><span class="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded">שיווק דיגיטלי</span>
+                </div>
+                <a href="/blog/website-analytics-tracking-guide/" class="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors font-medium">
+                  <span>קרא עוד</span>
+                  <svg class="w-4 h-4 mr-2 rtl:mr-0 rtl:ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m12 19-7-7 7-7"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5"></path>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          
         </div>
       </div>
     </div>
   </div>
 
   <!-- Scripts -->
-  <script src="/static/js/main.255395b8.js"></script>
+  <script src="/static/js/main.89fc21f3.js"></script>
+  <!-- Sticky CTA Buttons - Expandable Design Like Homepage -->
+  <div id="sticky-cta" style="position: fixed !important; bottom: 20px !important; left: 20px !important; z-index: 99999 !important; display: block !important; visibility: visible !important; opacity: 1 !important;">
+    <div id="sticky-cta-buttons" style="display: none !important; flex-direction: column !important; align-items: center !important; gap: 8px !important; margin-bottom: 8px !important;">
+      <!-- WhatsApp Button -->
+      <a href="https://wa.me/972501234567?text=שלום! אני מעוניין בשירותי בניית אתרים" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         style="background-color: #10B981 !important; color: white !important; padding: 12px !important; border-radius: 50% !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important; display: flex !important; align-items: center !important; justify-content: center !important; width: 48px !important; height: 48px !important; font-size: 16px !important; visibility: visible !important; opacity: 1 !important; text-decoration: none !important; transition: all 0.3s ease !important;"
+         onmouseover="this.style.transform='scale(1.05)'" 
+         onmouseout="this.style.transform='scale(1)'"
+         onclick="gtag('event', 'click', {'event_category': 'contact', 'event_label': 'whatsapp_sticky', 'transport_type': 'beacon'});">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+      </a>
+      
+      <!-- Phone Button -->
+      <a href="tel:+972501234567" 
+         style="background-color: #3B82F6 !important; color: white !important; padding: 12px !important; border-radius: 50% !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important; display: flex !important; align-items: center !important; justify-content: center !important; width: 48px !important; height: 48px !important; font-size: 16px !important; visibility: visible !important; opacity: 1 !important; text-decoration: none !important; transition: all 0.3s ease !important;"
+         onmouseover="this.style.transform='scale(1.05)'" 
+         onmouseout="this.style.transform='scale(1)'"
+         onclick="gtag('event', 'click', {'event_category': 'contact', 'event_label': 'phone_sticky', 'transport_type': 'beacon'});">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        </svg>
+      </a>
+      
+      <!-- Email Button -->
+      <a href="mailto:contact@amit-solutions.co.il" 
+         style="background-color: #fbbf24 !important; color: #000 !important; padding: 12px !important; border-radius: 50% !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important; display: flex !important; align-items: center !important; justify-content: center !important; width: 48px !important; height: 48px !important; font-size: 16px !important; visibility: visible !important; opacity: 1 !important; text-decoration: none !important; transition: all 0.3s ease !important;"
+         onmouseover="this.style.transform='scale(1.05)'" 
+         onmouseout="this.style.transform='scale(1)'"
+         onclick="gtag('event', 'click', {'event_category': 'contact', 'event_label': 'email_sticky', 'transport_type': 'beacon'});">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+      </a>
+    </div>
+    
+    <!-- Plus Button (Main Toggle) -->
+    <button id="sticky-cta-toggle" 
+            style="background-color: #fbbf24 !important; color: #000 !important; padding: 16px !important; border-radius: 50% !important; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important; display: flex !important; align-items: center !important; justify-content: center !important; width: 56px !important; height: 56px !important; font-size: 24px !important; visibility: visible !important; opacity: 1 !important; text-decoration: none !important; transition: all 0.3s ease !important; border: none !important; cursor: pointer !important;"
+            onmouseover="this.style.transform='scale(1.05)'" 
+            onmouseout="this.style.transform='scale(1)'"
+            onclick="toggleStickyCTA()">
+      <span id="sticky-cta-icon" style="transition: transform 0.3s ease !important;">+</span>
+    </button>
+  </div>
+
+  <script>
+    function toggleStickyCTA() {
+      const buttons = document.getElementById('sticky-cta-buttons');
+      const icon = document.getElementById('sticky-cta-icon');
+      
+      if (buttons.style.display === 'none' || buttons.style.display === '') {
+        buttons.style.display = 'flex';
+        icon.style.transform = 'rotate(45deg)';
+        gtag('event', 'expand', {'event_category': 'cta', 'event_label': 'floating_cta'});
+      } else {
+        buttons.style.display = 'none';
+        icon.style.transform = 'rotate(0deg)';
+        gtag('event', 'collapse', {'event_category': 'cta', 'event_label': 'floating_cta'});
+      }
+    }
+  </script>
+
   <script>
     // Initialize React app
     if (typeof window !== 'undefined' && window.React && window.ReactDOM) {
