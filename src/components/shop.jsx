@@ -80,7 +80,7 @@ export const Shop = (props) => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             חבילות השירותים שלי
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-2xl text-gray-300 max-w-3xl mx-auto">
             בחרו את החבילה המתאימה לעסק שלכם וקבלו אתר מקצועי שמביא תוצאות
           </p>
         </motion.div>
@@ -111,16 +111,16 @@ export const Shop = (props) => {
 
                   {/* Content */}
                   <div className="p-8 flex flex-col justify-center">
-                    <h3 className="text-3xl font-bold text-white mb-4">
+                    <h3 className="text-4xl font-bold text-white mb-4">
                       {products[currentProductIndex].title}
                     </h3>
 
-                    <p className="text-gray-300 mb-6 leading-relaxed">
+                    <p className="text-gray-300 mb-6 leading-relaxed text-lg">
                       {products[currentProductIndex].description}
                     </p>
 
                     <div className="mb-6">
-                      <h4 className="font-semibold text-white mb-3">
+                      <h4 className="font-semibold text-white mb-3 text-lg">
                         מה כלול:
                       </h4>
                       <ul className="space-y-2">
@@ -128,7 +128,7 @@ export const Shop = (props) => {
                           (feature, index) => (
                             <li
                               key={index}
-                              className="flex items-center text-gray-300"
+                              className="flex items-center text-gray-300 text-lg"
                             >
                               <div className="w-2 h-2 bg-yellow-400 rounded-full ml-3 flex-shrink-0"></div>
                               {feature}
@@ -139,7 +139,7 @@ export const Shop = (props) => {
                     </div>
 
                     <div className="flex items-center justify-between mb-6">
-                      <div className="text-3xl font-bold text-yellow-400">
+                      <div className="text-4xl font-bold text-yellow-400">
                         {products[currentProductIndex].price}
                       </div>
                     </div>
@@ -147,7 +147,7 @@ export const Shop = (props) => {
                     <div className="flex flex-col sm:flex-row gap-3">
                       <motion.a
                         href={products[currentProductIndex].paymentUrl}
-                        className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-lg font-semibold text-center flex items-center justify-center space-x-2 rtl:space-x-reverse transition-colors"
+                        className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-lg font-semibold text-lg text-center flex items-center justify-center space-x-2 rtl:space-x-reverse transition-colors"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => {
@@ -168,7 +168,7 @@ export const Shop = (props) => {
                         )}`}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex-1 bg-gray-700 hover:bg-gray-600 text-yellow-400 px-6 py-3 rounded-lg font-semibold text-center flex items-center justify-center space-x-2 rtl:space-x-reverse transition-colors"
+                        className="flex-1 bg-gray-700 hover:bg-gray-600 text-yellow-400 px-6 py-3 rounded-lg font-semibold text-lg text-center flex items-center justify-center space-x-2 rtl:space-x-reverse transition-colors"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => {
@@ -215,18 +215,20 @@ export const Shop = (props) => {
           className="mt-16 max-w-4xl mx-auto"
         >
           <div className="bg-gray-800 rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">
+            <h3 className="text-3xl font-bold text-white mb-6 text-center">
               איך זה עובד?
             </h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h4 className="font-semibold text-white mb-4">תהליך העבודה:</h4>
+                <h4 className="font-semibold text-white mb-4 text-lg">
+                  תהליך העבודה:
+                </h4>
                 <ol className="space-y-3">
                   <li className="flex items-start">
                     <span className="bg-yellow-500 text-black w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold ml-3 flex-shrink-0">
                       1
                     </span>
-                    <span className="text-gray-300">
+                    <span className="text-gray-300 text-lg">
                       בוחרים חבילה ומתקשרים לקבלת ייעוץ מקצועי
                     </span>
                   </li>
@@ -234,7 +236,7 @@ export const Shop = (props) => {
                     <span className="bg-yellow-500 text-black w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold ml-3 flex-shrink-0">
                       2
                     </span>
-                    <span className="text-gray-300">
+                    <span className="text-gray-300 text-lg">
                       נקבע פגישה להבנת הצרכים והגדרת הפרויקט
                     </span>
                   </li>
@@ -242,7 +244,7 @@ export const Shop = (props) => {
                     <span className="bg-yellow-500 text-black w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold ml-3 flex-shrink-0">
                       3
                     </span>
-                    <span className="text-gray-300">
+                    <span className="text-gray-300 text-lg">
                       מקבלים הצעת מחיר מפורטת ומקצועית
                     </span>
                   </li>
@@ -250,34 +252,40 @@ export const Shop = (props) => {
                     <span className="bg-yellow-500 text-black w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold ml-3 flex-shrink-0">
                       4
                     </span>
-                    <span className="text-gray-300">
+                    <span className="text-gray-300 text-lg">
                       מתחילים בפיתוח עם עדכונים שוטפים
                     </span>
                   </li>
                 </ol>
               </div>
               <div>
-                <h4 className="font-semibold text-white mb-4">מה תקבלו:</h4>
+                <h4 className="font-semibold text-white mb-4 text-lg">
+                  מה תקבלו:
+                </h4>
                 <ul className="space-y-3">
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-yellow-400 rounded-full ml-3 flex-shrink-0"></div>
-                    <span className="text-gray-300">
+                    <span className="text-gray-300 text-lg">
                       אתר מהיר ומותאם למובייל
                     </span>
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-yellow-400 rounded-full ml-3 flex-shrink-0"></div>
-                    <span className="text-gray-300">
+                    <span className="text-gray-300 text-lg">
                       חיבור Google Business Profile
                     </span>
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-yellow-400 rounded-full ml-3 flex-shrink-0"></div>
-                    <span className="text-gray-300">SEO בסיסי לגוגל</span>
+                    <span className="text-gray-300 text-lg">
+                      SEO בסיסי לגוגל
+                    </span>
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-yellow-400 rounded-full ml-3 flex-shrink-0"></div>
-                    <span className="text-gray-300">תמיכה והדרכה מלאה</span>
+                    <span className="text-gray-300 text-lg">
+                      תמיכה והדרכה מלאה
+                    </span>
                   </li>
                 </ul>
               </div>

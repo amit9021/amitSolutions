@@ -27,7 +27,7 @@ export const Header = (props) => {
             {/* Logo at the very top */}
 
             <motion.div
-              className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-black text-sm font-medium mb-6"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-black text-base font-medium mb-6"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
@@ -40,7 +40,7 @@ export const Header = (props) => {
               {data.title || "Amit Solutions"}
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-2xl md:text-3xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
               {data.paragraph ||
                 "אתרי תדמית מהירים ומותאמים למובייל לעסקים קטנים ובעלי מקצוע."}
             </p>
@@ -50,7 +50,7 @@ export const Header = (props) => {
                 href={`https://wa.me/+972547926661?text=${encodeURIComponent(
                   "שלום! אני מעוניין באתר לעסק שלי"
                 )}`}
-                className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black px-8 py-4 rounded-xl font-semibold flex items-center space-x-2 rtl:space-x-reverse transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black px-8 py-4 rounded-xl font-semibold text-lg flex items-center space-x-2 rtl:space-x-reverse transition-all duration-300 shadow-lg hover:shadow-xl"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -60,7 +60,7 @@ export const Header = (props) => {
 
               <motion.a
                 href="#portfolio"
-                className="bg-transparent text-white px-8 py-4 rounded-xl font-semibold flex items-center space-x-2 rtl:space-x-reverse border-2 border-yellow-400 hover:bg-yellow-400 hover:text-black transition-all duration-300"
+                className="bg-transparent text-white px-8 py-4 rounded-xl font-semibold text-lg flex items-center space-x-2 rtl:space-x-reverse border-2 border-yellow-400 hover:bg-yellow-400 hover:text-black transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={(e) => {
@@ -83,7 +83,7 @@ export const Header = (props) => {
               >
                 <a
                   href="/blog/"
-                  className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors"
+                  className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors text-lg"
                   onClick={() =>
                     trackBlogNavigation("view_blog", "hero_section")
                   }

@@ -18,12 +18,12 @@ export const About = (props) => {
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               אודותינו
             </h2>
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+            <p className="text-2xl text-gray-300 mb-8 leading-relaxed">
               {data.paragraph ||
                 "אני עמית, מפתח אתרים מהירים ומותאמים למובייל לעסקים קטנים ובעלי מקצוע."}
             </p>
 
-            <h3 className="text-2xl font-bold text-white mb-6">
+            <h3 className="text-3xl font-bold text-white mb-6">
               למה לבחור בי?
             </h3>
 
@@ -40,7 +40,7 @@ export const About = (props) => {
                       className="flex items-start text-gray-300 justify-center md:justify-start"
                     >
                       <CheckCircle className="w-6 h-6 text-yellow-400 ml-4 flex-shrink-0 mt-0.5" />
-                      <span className="text-lg leading-relaxed">{item}</span>
+                      <span className="text-xl leading-relaxed">{item}</span>
                     </motion.li>
                   ))}
                 </ul>
@@ -57,7 +57,7 @@ export const About = (props) => {
                       className="flex items-start text-gray-300 justify-center md:justify-start"
                     >
                       <CheckCircle className="w-6 h-6 text-yellow-400 ml-4 flex-shrink-0 mt-0.5" />
-                      <span className="text-lg leading-relaxed">{item}</span>
+                      <span className="text-xl leading-relaxed">{item}</span>
                     </motion.li>
                   ))}
                 </ul>

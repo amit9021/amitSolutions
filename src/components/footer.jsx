@@ -30,7 +30,7 @@ export const Footer = (props) => {
               </div>
               <h3 className="text-2xl font-bold">{companyName}</h3>
             </div>
-            <p className="text-gray-300 mb-6 max-w-md">{tagline}</p>
+            <p className="text-gray-300 mb-6 max-w-md text-lg">{tagline}</p>
             <div className="flex items-center space-x-4 rtl:space-x-reverse">
               <a
                 href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(
@@ -67,12 +67,12 @@ export const Footer = (props) => {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold mb-4">קישורים מהירים</h4>
+            <h4 className="text-xl font-semibold mb-4">קישורים מהירים</h4>
             <ul className="space-y-3">
               <li>
                 <a
                   href="#about"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-lg"
                 >
                   אודותינו
                 </a>
@@ -80,7 +80,7 @@ export const Footer = (props) => {
               <li>
                 <a
                   href="#services"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-lg"
                 >
                   שירותים
                 </a>
@@ -88,7 +88,7 @@ export const Footer = (props) => {
               <li>
                 <a
                   href="#portfolio"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-lg"
                 >
                   פורטפוליו
                 </a>
@@ -96,7 +96,7 @@ export const Footer = (props) => {
               <li>
                 <a
                   href="#contact"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-lg"
                 >
                   צור קשר
                 </a>
@@ -111,13 +111,13 @@ export const Footer = (props) => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-lg font-semibold mb-4">פרטי יצירת קשר</h4>
+            <h4 className="text-xl font-semibold mb-4">פרטי יצירת קשר</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3 rtl:space-x-reverse">
                 <Phone className="w-4 h-4 text-yellow-400" />
                 <a
                   href={`tel:${phone}`}
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-lg"
                 >
                   {phone}
                 </a>
@@ -126,14 +126,14 @@ export const Footer = (props) => {
                 <Mail className="w-4 h-4 text-yellow-400" />
                 <a
                   href={`mailto:${email}`}
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-lg"
                 >
                   {email}
                 </a>
               </div>
               <div className="flex items-center space-x-3 rtl:space-x-reverse">
                 <MapPin className="w-4 h-4 text-yellow-400" />
-                <span className="text-gray-300">{serviceArea}</span>
+                <span className="text-gray-300 text-lg">{serviceArea}</span>
               </div>
             </div>
           </motion.div>
@@ -148,7 +148,7 @@ export const Footer = (props) => {
           className="border-t border-gray-700 mt-12 pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-base">
               &copy; {copyrightYear} {companyName}. כל הזכויות שמורות.
             </p>
             <div className="flex items-center space-x-4 rtl:space-x-reverse">
@@ -156,7 +156,7 @@ export const Footer = (props) => {
                 href={website}
                 target="_blank"
                 rel="noreferrer"
-                className="text-gray-400 hover:text-yellow-400 transition-colors text-sm flex items-center space-x-1 rtl:space-x-reverse"
+                className="text-gray-400 hover:text-yellow-400 transition-colors text-base flex items-center space-x-1 rtl:space-x-reverse"
               >
                 <span>אתר העסק</span>
                 <ExternalLink className="w-3 h-3" />

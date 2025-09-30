@@ -82,7 +82,7 @@ ${message}
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             צור קשר
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-2xl text-gray-300 max-w-3xl mx-auto">
             מוכן להתחיל? בואו נדבר על הפרויקט שלך
           </p>
         </motion.div>
@@ -96,7 +96,7 @@ ${message}
             viewport={{ once: true }}
           >
             <div className="bg-gray-800 p-8 rounded-2xl shadow-lg">
-              <h3 className="text-2xl font-bold text-white mb-6">שלח הודעה</h3>
+              <h3 className="text-3xl font-bold text-white mb-6">שלח הודעה</h3>
 
               {isSubmitted && (
                 <motion.div
@@ -116,7 +116,7 @@ ${message}
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-300 mb-2"
+                      className="block text-base font-medium text-gray-300 mb-2"
                     >
                       שם מלא
                     </label>
@@ -126,7 +126,7 @@ ${message}
                       name="name"
                       value={name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-lg"
                       placeholder="השם שלך"
                       required
                     />
@@ -134,7 +134,7 @@ ${message}
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-300 mb-2"
+                      className="block text-base font-medium text-gray-300 mb-2"
                     >
                       אימייל
                     </label>
@@ -144,7 +144,7 @@ ${message}
                       name="email"
                       value={email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-lg"
                       placeholder="example@email.com"
                       required
                     />
@@ -172,7 +172,7 @@ ${message}
 
                 <motion.button
                   type="submit"
-                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 rounded-lg font-semibold flex items-center justify-center space-x-2 rtl:space-x-reverse transition-all duration-300"
+                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center space-x-2 rtl:space-x-reverse transition-all duration-300"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -192,7 +192,7 @@ ${message}
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">
+              <h3 className="text-3xl font-bold text-white mb-6">
                 פרטי יצירת קשר
               </h3>
               <div className="space-y-6">
@@ -201,10 +201,10 @@ ${message}
                     <Phone className="w-6 h-6 text-yellow-400" />
                   </div>
                   <div>
-                    <p className="font-semibold text-white">טלפון</p>
+                    <p className="font-semibold text-white text-lg">טלפון</p>
                     <a
                       href={`tel:${phone}`}
-                      className="text-yellow-400 hover:text-yellow-500"
+                      className="text-yellow-400 hover:text-yellow-500 text-lg"
                       onClick={() => trackPhoneClick("contact_info")}
                     >
                       {phone}
@@ -223,7 +223,7 @@ ${message}
                         contactData.whatsappMessage ||
                           "שלום! אני מעוניין באתר לעסק שלי"
                       )}`}
-                      className="text-yellow-400 hover:text-yellow-500"
+                      className="text-yellow-400 hover:text-yellow-500 text-lg"
                       target="_blank"
                       rel="noreferrer"
                       onClick={() => trackWhatsAppClick("contact_info")}
@@ -243,7 +243,7 @@ ${message}
                       href={`mailto:${
                         contactData.email || "amit@amitsolutions.co.il"
                       }`}
-                      className="text-yellow-400 hover:text-yellow-500"
+                      className="text-yellow-400 hover:text-yellow-500 text-lg"
                     >
                       {contactData.email || "amit@amitsolutions.co.il"}
                     </a>
@@ -256,7 +256,7 @@ ${message}
                   </div>
                   <div>
                     <p className="font-semibold text-white">אזור שירות</p>
-                    <p className="text-gray-300">
+                    <p className="text-gray-300 text-lg">
                       {contactData.serviceArea || "ישראל (התמקדות בדרום/מרכז)"}
                     </p>
                   </div>

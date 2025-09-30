@@ -51,7 +51,7 @@ export const CTA = (props) => {
               onClick={() => trackWhatsAppClick("floating_cta")}
             >
               <MessageCircle className="w-5 h-5 ml-3" />
-              <span className="font-semibold">ווטסאפ</span>
+              <span className="font-semibold text-lg">ווטסאפ</span>
             </motion.a>
 
             <motion.a
@@ -62,7 +62,7 @@ export const CTA = (props) => {
               onClick={() => trackPhoneClick("floating_cta")}
             >
               <Phone className="w-5 h-5 ml-3" />
-              <span className="font-semibold">התקשרו</span>
+              <span className="font-semibold text-lg">התקשרו</span>
             </motion.a>
 
             <motion.a
@@ -73,7 +73,7 @@ export const CTA = (props) => {
               onClick={() => trackEmailClick("floating_cta")}
             >
               <Mail className="w-5 h-5 ml-3" />
-              <span className="font-semibold">מייל</span>
+              <span className="font-semibold text-lg">מייל</span>
             </motion.a>
           </motion.div>
         )}

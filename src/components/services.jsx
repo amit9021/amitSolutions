@@ -32,7 +32,7 @@ export const Services = (props) => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             השירותים שלי
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-2xl text-gray-300 max-w-3xl mx-auto">
             כל מה שצריך כדי להביא לך לקוחות חדשים - במקום אחד
           </p>
         </motion.div>
@@ -55,10 +55,12 @@ export const Services = (props) => {
                     <IconComponent className="w-8 h-8 text-black" />
                   )}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   {service.name}
                 </h3>
-                <p className="text-gray-300 leading-relaxed">{service.text}</p>
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  {service.text}
+                </p>
               </motion.div>
             );
           })}

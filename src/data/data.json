@@ -13,7 +13,6 @@
     "menuItems": [
       { "text": "שירותים", "href": "#services" },
       { "text": "חבילות", "href": "#shop" },
-
       { "text": "צור קשר", "href": "#contact" }
     ]
   },

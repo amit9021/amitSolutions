@@ -19,7 +19,7 @@ export const BlogPreview = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             הבלוג שלנו
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+          <p className="text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
             טיפים, מדריכים ומידע שימושי על בניית אתרים, SEO ושיווק דיגיטלי
             לעסקים קטנים
           </p>
@@ -52,7 +52,7 @@ export const BlogPreview = () => {
                     {post.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-3 py-1 bg-yellow-400 text-black text-sm font-medium rounded-full cursor-pointer hover:bg-yellow-300 transition-colors"
+                        className="px-3 py-1 bg-yellow-400 text-black text-base font-medium rounded-full cursor-pointer hover:bg-yellow-300 transition-colors"
                         onClick={() => trackBlogTagClick(tag, post.slug)}
                       >
                         {tag}
@@ -60,15 +60,15 @@ export const BlogPreview = () => {
                     ))}
                   </div>
 
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-yellow-400 transition-colors">
+                  <h3 className="text-2xl font-bold mb-3 group-hover:text-yellow-400 transition-colors">
                     {post.title}
                   </h3>
 
-                  <p className="text-gray-300 mb-4 line-clamp-3">
+                  <p className="text-gray-300 mb-4 line-clamp-3 text-lg">
                     {post.excerpt}
                   </p>
 
-                  <div className="flex items-center justify-between text-sm text-gray-400">
+                  <div className="flex items-center justify-between text-base text-gray-400">
                     <div className="flex items-center">
                       <User className="w-4 h-4 ml-1" />
                       {post.author}
@@ -79,7 +79,7 @@ export const BlogPreview = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center mt-3 text-yellow-400">
+                  <div className="flex items-center mt-3 text-yellow-400 text-base">
                     <Clock className="w-4 h-4 ml-1" />
                     {post.readTime}
                   </div>
@@ -98,7 +98,7 @@ export const BlogPreview = () => {
         >
           <a
             href="/blog/"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-semibold text-lg rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
             onClick={() =>
               trackBlogNavigation("view_all_posts", "homepage_blog_preview")
             }
