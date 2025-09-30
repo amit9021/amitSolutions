@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { BookOpen, Calendar, Clock, User, ArrowLeft } from "lucide-react";
 import { getAllPosts } from "../content/posts";
 import { trackBlogNavigation, trackBlogTagClick } from "../utils/analytics";
@@ -36,7 +35,7 @@ export const BlogPreview = () => {
               viewport={{ once: true }}
               className="bg-black rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
-              <Link to={`/blog/${post.slug}`} className="block">
+              <a href={`/blog/${post.slug}/`} className="block">
                 {post.coverImage && (
                   <div className="aspect-video overflow-hidden">
                     <img
@@ -85,7 +84,7 @@ export const BlogPreview = () => {
                     {post.readTime}
                   </div>
                 </div>
-              </Link>
+              </a>
             </motion.article>
           ))}
         </div>
@@ -97,8 +96,8 @@ export const BlogPreview = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <Link
-            to="/blog"
+          <a
+            href="/blog/"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
             onClick={() =>
               trackBlogNavigation("view_all_posts", "homepage_blog_preview")
@@ -107,7 +106,7 @@ export const BlogPreview = () => {
             <BookOpen className="w-5 h-5 ml-2" />
             <span>קרא עוד בבלוג</span>
             <ArrowLeft className="w-5 h-5 mr-2" />
-          </Link>
+          </a>
         </motion.div>
       </div>
     </section>

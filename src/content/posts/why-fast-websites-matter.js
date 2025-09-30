@@ -25,7 +25,7 @@ export const post = {
 
 ## ההשפעה הישירה על SEO וקידום אורגני
 
-גוגל משתמשת ב־**Page Experience** וב־**Core Web Vitals** כגורמים לדירוג. אתרים איטיים מקבלים דירוג נמוך יותר בתוצאות החיפוש.  
+גוגל משתמשת ב־**Page Experience** וב־**Core Web Vitals** כגורמים לדירוג. אתרים איטיים מקבלים דירוג נמוך יותר בתוצאות החיפוש. ([למדו עוד על SEO](/blog/what-is-seo-and-why-important/))
 
 שלושת המדדים העיקריים (Core Web Vitals):  
 - **LCP (Largest Contentful Paint)** – כמה מהר נטען האלמנט הראשי.  
@@ -65,7 +65,9 @@ export const post = {
 5. **בדיקה ומדידה רציפה**  
    - נתח את האתר עם Google PageSpeed Insights ו־Lighthouse.  
    - קבל נתונים אמיתיים עם Google Search Console → Core Web Vitals Report.  
-   - בצע שיפורים הדרגתיים ובדוק את ההשפעה.  
+   - בצע שיפורים הדרגתיים ובדוק את ההשפעה.
+
+**טיפ נוסף:** עיצוב מובייל-פירסט לא רק משפר את חוויית המשתמש, אלא גם את מהירות האתר. ([קראו את המדריך המלא לעיצוב מובייל-פירסט](/blog/mobile-first-design/))  
 
 ---
 

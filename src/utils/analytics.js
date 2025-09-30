@@ -102,3 +102,85 @@ export const trackBlogTagClick = (tagName, postSlug) => {
 export const trackBlogPostCompletion = (postSlug, timeSpent) => {
   trackEvent("complete", "blog", postSlug, timeSpent);
 };
+
+// Business Action Tracking Functions
+
+// Track email button clicks
+export const trackEmailClick = (source) => {
+  trackEvent("click", "engagement", "email_button", source);
+};
+
+// Track service section interactions
+export const trackServiceInteraction = (serviceName, action) => {
+  trackEvent("interact", "service", serviceName, action);
+};
+
+// Track shop/pricing interactions
+export const trackPricingView = (packageName, price) => {
+  trackEvent("view", "pricing", packageName, price);
+};
+
+export const trackPricingClick = (packageName, action) => {
+  trackEvent("click", "pricing", packageName, action);
+};
+
+// Track contact form interactions
+export const trackContactFormStart = (formType) => {
+  trackEvent("form_start", "contact", formType);
+};
+
+export const trackContactFormComplete = (formType) => {
+  trackEvent("form_complete", "contact", formType);
+};
+
+export const trackContactFormError = (formType, error) => {
+  trackEvent("form_error", "contact", `${formType}_${error}`);
+};
+
+// Track navigation menu interactions
+export const trackMenuClick = (menuItem, location) => {
+  trackEvent("click", "navigation", menuItem, location);
+};
+
+// Track section views (when user scrolls to specific sections)
+export const trackSectionView = (sectionName) => {
+  trackEvent("view", "section", sectionName);
+};
+
+// Track portfolio/gallery interactions
+export const trackPortfolioInteraction = (itemName, action) => {
+  trackEvent("interact", "portfolio", itemName, action);
+};
+
+// Track CTA button interactions (floating CTA)
+export const trackCTAExpand = () => {
+  trackEvent("expand", "cta", "floating_cta");
+};
+
+export const trackCTACollapse = () => {
+  trackEvent("collapse", "cta", "floating_cta");
+};
+
+// Track business conversion events
+export const trackBusinessInquiry = (source, method) => {
+  trackEvent("inquiry", "business", source, method);
+};
+
+export const trackLeadGeneration = (source, leadType) => {
+  trackEvent("lead", "business", source, leadType);
+};
+
+// Track user engagement levels
+export const trackHighEngagement = (section, timeSpent) => {
+  trackEvent("high_engagement", "user_behavior", section, timeSpent);
+};
+
+// Track mobile vs desktop interactions
+export const trackDeviceInteraction = (deviceType, action) => {
+  trackEvent("device_interaction", "user_behavior", deviceType, action);
+};
+
+// Track page performance
+export const trackPagePerformance = (metric, value) => {
+  trackEvent("performance", "technical", metric, value);
+};

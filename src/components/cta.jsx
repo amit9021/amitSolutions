@@ -1,19 +1,30 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Phone, Mail, X, Plus } from "lucide-react";
-import { trackWhatsAppClick, trackPhoneClick } from "../utils/analytics";
+import {
+  trackWhatsAppClick,
+  trackPhoneClick,
+  trackEmailClick,
+  trackCTAExpand,
+  trackCTACollapse,
+} from "../utils/analytics";
 
 export const CTA = (props) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpanded = () => {
+    if (!isExpanded) {
+      trackCTAExpand();
+    } else {
+      trackCTACollapse();
+    }
     setIsExpanded(!isExpanded);
   };
 
   const contactData = props.data || {};
-  const phone = contactData.phone || "+972-50-000-0000";
-  const whatsapp = contactData.whatsapp || "+972500000000";
-  const email = contactData.email || "amit@amitsolutions.co.il";
+  const phone = contactData.phone || "+972547926661";
+  const whatsapp = contactData.whatsapp || "972547926661";
+  const email = contactData.email || "amit9021@gmail.com";
   const whatsappMessage =
     contactData.whatsappMessage || "שלום! אני מעוניין באתר לעסק שלי";
 
@@ -37,7 +48,7 @@ export const CTA = (props) => {
               className="flex items-center bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-3 rounded-full shadow-lg transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => trackWhatsAppClick('floating_cta')}
+              onClick={() => trackWhatsAppClick("floating_cta")}
             >
               <MessageCircle className="w-5 h-5 ml-3" />
               <span className="font-semibold">ווטסאפ</span>
@@ -48,7 +59,7 @@ export const CTA = (props) => {
               className="flex items-center bg-gray-700 hover:bg-gray-600 text-yellow-400 px-4 py-3 rounded-full shadow-lg transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => trackPhoneClick('floating_cta')}
+              onClick={() => trackPhoneClick("floating_cta")}
             >
               <Phone className="w-5 h-5 ml-3" />
               <span className="font-semibold">התקשרו</span>
@@ -59,6 +70,7 @@ export const CTA = (props) => {
               className="flex items-center bg-gray-700 hover:bg-gray-600 text-yellow-400 px-4 py-3 rounded-full shadow-lg transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => trackEmailClick("floating_cta")}
             >
               <Mail className="w-5 h-5 ml-3" />
               <span className="font-semibold">מייל</span>

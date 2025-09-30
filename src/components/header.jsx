@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { MessageCircle, ChevronRight, Zap, BookOpen } from "lucide-react";
-import { Link } from "react-router-dom";
 import { trackBlogNavigation } from "../utils/analytics";
 
 export const Header = (props) => {
@@ -82,8 +81,8 @@ export const Header = (props) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
               >
-                <Link
-                  to="/blog"
+                <a
+                  href="/blog/"
                   className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors"
                   onClick={() =>
                     trackBlogNavigation("view_blog", "hero_section")
@@ -91,7 +90,7 @@ export const Header = (props) => {
                 >
                   <BookOpen className="w-5 h-5 ml-2" />
                   <span>קרא את הבלוג שלנו</span>
-                </Link>
+                </a>
               </motion.div>
             </div>
           </motion.div>

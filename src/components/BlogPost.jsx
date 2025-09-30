@@ -118,9 +118,12 @@ export const BlogPost = () => {
       <main className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">המאמר לא נמצא</h1>
-          <Link to="/blog" className="text-yellow-400 hover:text-yellow-300">
+          <a
+            href="/blog/index.html"
+            className="text-yellow-400 hover:text-yellow-300"
+          >
             חזרה לבלוג
-          </Link>
+          </a>
         </div>
       </main>
     );
@@ -143,14 +146,14 @@ export const BlogPost = () => {
         <nav className="py-6 bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between">
-              <Link
-                to="/blog"
+              <a
+                href="/blog/"
                 className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors"
                 onClick={() => trackBlogNavigation("back_to_blog", "blog_post")}
               >
                 <ArrowLeft className="w-5 h-5 ml-2" />
                 חזרה לבלוג
-              </Link>
+              </a>
               <Link
                 to="/"
                 className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors"
@@ -298,8 +301,8 @@ export const BlogPost = () => {
         <footer className="py-12 bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between max-w-4xl mx-auto">
-              <Link
-                to="/blog"
+              <a
+                href="/blog/"
                 className="inline-flex items-center px-6 py-3 bg-yellow-400 text-black font-semibold rounded-xl hover:bg-yellow-300 transition-colors"
                 onClick={() =>
                   trackBlogNavigation("back_to_blog", "blog_post_footer")
@@ -307,7 +310,7 @@ export const BlogPost = () => {
               >
                 <ArrowLeft className="w-5 h-5 ml-2" />
                 חזרה לבלוג
-              </Link>
+              </a>
               <Link
                 to="/"
                 className="inline-flex items-center px-6 py-3 border-2 border-yellow-400 text-yellow-400 font-semibold rounded-xl hover:bg-yellow-400 hover:text-black transition-colors"

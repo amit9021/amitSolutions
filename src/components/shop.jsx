@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, MessageCircle } from "lucide-react";
+import {
+  trackPricingView,
+  trackPricingClick,
+  trackBusinessInquiry,
+} from "../utils/analytics";
 
 export const Shop = (props) => {
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
@@ -46,7 +51,17 @@ export const Shop = (props) => {
 
   const goToProduct = (index) => {
     setCurrentProductIndex(index);
+    // Track pricing view when user switches to a product
+    const product = products[index];
+    trackPricingView(product.title, product.price);
   };
+
+  // Track initial pricing view
+  useEffect(() => {
+    const product = products[currentProductIndex];
+    trackPricingView(product.title, product.price);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentProductIndex]);
 
   return (
     <section
@@ -135,6 +150,13 @@ export const Shop = (props) => {
                         className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded-lg font-semibold text-center flex items-center justify-center space-x-2 rtl:space-x-reverse transition-colors"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          trackPricingClick(
+                            products[currentProductIndex].title,
+                            "phone_call"
+                          );
+                          trackBusinessInquiry("pricing_section", "phone");
+                        }}
                       >
                         <Phone className="w-5 h-5" />
                         <span>התקשרו עכשיו</span>
@@ -149,6 +171,13 @@ export const Shop = (props) => {
                         className="flex-1 bg-gray-700 hover:bg-gray-600 text-yellow-400 px-6 py-3 rounded-lg font-semibold text-center flex items-center justify-center space-x-2 rtl:space-x-reverse transition-colors"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          trackPricingClick(
+                            products[currentProductIndex].title,
+                            "whatsapp"
+                          );
+                          trackBusinessInquiry("pricing_section", "whatsapp");
+                        }}
                       >
                         <MessageCircle className="w-5 h-5" />
                         <span>ווטסאפ</span>

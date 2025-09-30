@@ -1,6 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { MessageCircle, Phone, Menu, X } from "lucide-react";
+import {
+  trackMenuClick,
+  trackPhoneClick,
+  trackWhatsAppClick,
+} from "../utils/analytics";
 
 export const Navigation = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,16 +35,18 @@ export const Navigation = (props) => {
                 key={index}
                 href={item.href}
                 className="text-gray-300 hover:text-yellow-400 transition-colors"
+                onClick={() => trackMenuClick(item.text, "desktop_nav")}
               >
                 {item.text}
               </a>
             ))}
-            <Link
-              to="/blog"
+            <a
+              href="/blog/"
               className="text-gray-300 hover:text-yellow-400 transition-colors"
+              onClick={() => trackMenuClick("בלוג", "desktop_nav")}
             >
               בלוג
-            </Link>
+            </a>
           </div>
 
           {/* Right side buttons */}
@@ -49,6 +55,7 @@ export const Navigation = (props) => {
             <a
               href={`tel:${phone}`}
               className="p-2 rounded-lg bg-yellow-500/20 hover:bg-yellow-500/30 transition-colors"
+              onClick={() => trackPhoneClick("navigation")}
             >
               <Phone className="w-5 h-5 text-yellow-400" />
             </a>
@@ -59,6 +66,7 @@ export const Navigation = (props) => {
                 whatsappMessage
               )}`}
               className="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg flex items-center space-x-2 rtl:space-x-reverse transition-colors font-semibold"
+              onClick={() => trackWhatsAppClick("navigation")}
             >
               <MessageCircle className="w-4 h-4" />
               <span className="hidden sm:inline">וואטסאפ</span>
@@ -92,13 +100,13 @@ export const Navigation = (props) => {
                   {item.text}
                 </a>
               ))}
-              <Link
-                to="/blog"
+              <a
+                href="/blog/"
                 className="block px-4 py-2 text-gray-300 hover:bg-yellow-500/20 hover:text-yellow-400 rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 בלוג
-              </Link>
+              </a>
             </div>
           </div>
         )}

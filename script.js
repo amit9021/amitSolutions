@@ -53,6 +53,32 @@ async function init() {
   } catch (error) {
     console.error("❌ Error copying 404.html file:", error);
   }
+
+  // Generate static HTML pages for SEO
+  console.log("🚀 Generating static HTML pages for SEO...");
+  try {
+    const {
+      generateStaticPages,
+    } = require("./scripts/generate-static-pages.js");
+    await generateStaticPages();
+    console.log("✅ Static HTML pages generated for Google indexing");
+  } catch (error) {
+    console.error("❌ Error generating static pages:", error);
+  }
+
+  // Generate sitemap
+  console.log("🗺️ Generating sitemap...");
+  try {
+    const { exec } = require("child_process");
+    const { promisify } = require("util");
+    const execAsync = promisify(exec);
+    await execAsync("node scripts/generate-sitemap.js");
+    // Copy sitemap to docs directory
+    await promisify(fs.copy)("./public/sitemap.xml", "./docs/sitemap.xml");
+    console.log("✅ Sitemap generated and copied to docs directory");
+  } catch (error) {
+    console.error("❌ Error generating sitemap:", error);
+  }
 }
 
 init();

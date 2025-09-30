@@ -21,7 +21,11 @@ import { BlogIndex } from "./components/BlogIndex";
 import { BlogPost } from "./components/BlogPost";
 import { BlogPreview } from "./components/BlogPreview";
 import JsonData from "./data/data.json";
-import { trackPageView, trackScrollDepth } from "./utils/analytics";
+import {
+  trackPageView,
+  trackScrollDepth,
+  trackSectionView,
+} from "./utils/analytics";
 
 // ScrollToTop Component for route changes
 const ScrollToTop = () => {
@@ -146,6 +150,7 @@ const App = () => {
     let ticking = false;
     let lastScrollTop = 0;
     let trackedDepths = new Set();
+    let trackedSections = new Set();
 
     const handleScroll = () => {
       if (!ticking) {
@@ -159,6 +164,7 @@ const App = () => {
               document.documentElement.scrollHeight - window.innerHeight;
             const scrollPercent = Math.round((scrollTop / scrollHeight) * 100);
 
+            // Track scroll depth
             if (scrollPercent >= 25 && !trackedDepths.has(25)) {
               trackScrollDepth(25);
               trackedDepths.add(25);
@@ -172,6 +178,29 @@ const App = () => {
               trackScrollDepth(90);
               trackedDepths.add(90);
             }
+
+            // Track section views
+            const sections = [
+              "hero",
+              "about",
+              "services",
+              "blog",
+              "shop",
+              "contact",
+            ];
+            sections.forEach((section) => {
+              const element = document.getElementById(section);
+              if (element && !trackedSections.has(section)) {
+                const rect = element.getBoundingClientRect();
+                if (
+                  rect.top <= window.innerHeight / 2 &&
+                  rect.bottom >= window.innerHeight / 2
+                ) {
+                  trackSectionView(section);
+                  trackedSections.add(section);
+                }
+              }
+            });
 
             lastScrollTop = scrollTop;
           }

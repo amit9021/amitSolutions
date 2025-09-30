@@ -1,27 +1,62 @@
 const fs = require("fs");
 const path = require("path");
 
-// Define blog posts manually since we can't import ES modules in Node.js script
-const posts = [
-  {
-    slug: "why-fast-websites-matter",
-    publishedAt: "2024-12-19",
-  },
-  {
-    slug: "mobile-first-design",
-    publishedAt: "2024-12-18",
-  },
-  {
-    slug: "small-business-showcase-website-guide",
-    publishedAt: "2024-12-17",
-  },
-  {
-    slug: "local-seo-israel-small-business",
-    publishedAt: "2024-12-16",
-  },
-];
+// Dynamically load all posts from content directory
+async function getAllPosts() {
+  try {
+    // Read the index.js file to get the post imports
+    const indexPath = path.join(__dirname, "../src/content/posts/index.js");
+    const indexContent = fs.readFileSync(indexPath, "utf8");
 
-function generateSitemap() {
+    // Extract post imports from the file
+    const importMatches = indexContent.match(
+      /import { post as (\w+) } from "\.\/([^"]+)";/g
+    );
+    if (!importMatches) {
+      throw new Error("No post imports found in index.js");
+    }
+
+    const posts = [];
+
+    // Import each post dynamically
+    for (const importLine of importMatches) {
+      const match = importLine.match(
+        /import { post as (\w+) } from "\.\/([^"]+)";/
+      );
+      if (match) {
+        const [, variableName, fileName] = match;
+        const postPath = path.join(__dirname, "../src/content/posts", fileName);
+
+        try {
+          // Read and evaluate the post file
+          const postContent = fs.readFileSync(postPath, "utf8");
+          // Extract the post object from the file content
+          const postMatch = postContent.match(
+            /export const post = ({[\s\S]*?});/
+          );
+          if (postMatch) {
+            // Evaluate the post object (this is a simple approach)
+            const postCode = postMatch[1];
+            const post = eval(`(${postCode})`);
+            posts.push({
+              slug: post.slug,
+              publishedAt: post.publishedAt,
+            });
+          }
+        } catch (error) {
+          console.log(`❌ Error reading ${fileName}:`, error.message);
+        }
+      }
+    }
+
+    return posts;
+  } catch (error) {
+    console.error("❌ Error loading posts:", error);
+    return [];
+  }
+}
+
+function generateSitemap(posts) {
   const baseUrl = "https://amit-solutions.co.il";
   const currentDate = new Date().toISOString().split("T")[0];
 
@@ -98,9 +133,21 @@ function generateSitemap() {
 }
 
 // Generate and write sitemap
-const sitemap = generateSitemap();
-const sitemapPath = path.join(__dirname, "../public/sitemap.xml");
+async function main() {
+  try {
+    console.log("🚀 Generating sitemap...");
+    const posts = await getAllPosts();
+    console.log(`📚 Found ${posts.length} posts`);
 
-fs.writeFileSync(sitemapPath, sitemap);
-console.log("✅ Sitemap generated successfully");
-console.log(`📄 Sitemap saved to: ${sitemapPath}`);
+    const sitemap = generateSitemap(posts);
+    const sitemapPath = path.join(__dirname, "../public/sitemap.xml");
+
+    fs.writeFileSync(sitemapPath, sitemap);
+    console.log("✅ Sitemap generated successfully");
+    console.log(`📄 Sitemap saved to: ${sitemapPath}`);
+  } catch (error) {
+    console.error("❌ Error generating sitemap:", error);
+  }
+}
+
+main();

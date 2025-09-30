@@ -45,3 +45,19 @@
     Header always set X-XSS-Protection "1; mode=block"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
+
+# URL Rewriting for clean blog URLs
+RewriteEngine On
+RewriteBase /
+
+# Redirect /blog to /blog/index.html
+RewriteRule ^blog/?$ /blog/index.html [L,R=301]
+
+# Redirect /blog/slug to /blog/slug/index.html
+RewriteRule ^blog/([^/]+)/?$ /blog/$1/index.html [L,R=301]
+
+# Handle SPA routing for other paths (if any)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/blog/.*$
+RewriteRule . /index.html [L]
