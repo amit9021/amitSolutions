@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import Head from "next/head";
+import Link from "next/link";
 import {
   Calendar,
   Clock,
@@ -9,17 +9,17 @@ import {
   MessageCircle,
   Phone,
 } from "lucide-react";
-import { getAllPosts } from "../content/posts";
+import { getAllPosts } from "../../content/posts";
 import {
   trackBlogIndexView,
   trackBlogNavigation,
   trackBlogTagClick,
   trackWhatsAppClick,
   trackPhoneClick,
-} from "../utils/analytics";
+} from "../../utils/analytics";
 import { useEffect } from "react";
 
-export const BlogIndex = () => {
+export default function BlogIndex() {
   const posts = getAllPosts();
 
   // Track blog index page view
@@ -29,7 +29,7 @@ export const BlogIndex = () => {
 
   return (
     <>
-      <Helmet>
+      <Head>
         <title>בלוג - Amit Solutions</title>
         <meta
           name="description"
@@ -39,7 +39,7 @@ export const BlogIndex = () => {
           name="keywords"
           content="בלוג, אתרים, SEO, שיווק דיגיטלי, טיפים"
         />
-      </Helmet>
+      </Head>
 
       <main className="min-h-screen bg-black text-white">
         {/* Header */}
@@ -52,7 +52,7 @@ export const BlogIndex = () => {
               className="text-center"
             >
               <Link
-                to="/"
+                href="/"
                 className="inline-flex items-center text-yellow-400 hover:text-yellow-300 mb-8 transition-colors"
                 onClick={() =>
                   trackBlogNavigation("back_to_home", "blog_index")
@@ -79,13 +79,13 @@ export const BlogIndex = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {posts.map((post, index) => (
                 <motion.article
-                  key={post.id}
+                  key={post.slug}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group"
                 >
-                  <Link to={`/blog/${post.slug}`} className="block">
+                  <Link href={`/blog/${post.slug}`} className="block">
                     {post.coverImage && (
                       <div className="aspect-video overflow-hidden">
                         <img
@@ -101,7 +101,7 @@ export const BlogIndex = () => {
                       <div className="flex flex-wrap gap-2 mb-4">
                         {post.tags.map((tag) => (
                           <span
-                            key={tag}
+                            key={`${post.slug}-${tag}`}
                             className="px-3 py-1 bg-yellow-400 text-black text-sm font-medium rounded-full cursor-pointer hover:bg-yellow-300 transition-colors"
                             onClick={() => trackBlogTagClick(tag, post.slug)}
                           >
@@ -199,4 +199,4 @@ export const BlogIndex = () => {
       </main>
     </>
   );
-};
+}

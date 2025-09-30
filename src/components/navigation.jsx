@@ -17,7 +17,7 @@ export const Navigation = (props) => {
   const menuItems = props.menuItems || [];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-yellow-500/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-yellow-500/20">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -28,21 +28,23 @@ export const Navigation = (props) => {
             <span className="font-bold text-xl text-white">{companyName}</span>
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-            {menuItems.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className="text-gray-300 hover:text-yellow-400 transition-colors"
-                onClick={() => trackMenuClick(item.text, "desktop_nav")}
-              >
-                {item.text}
-              </a>
-            ))}
+          {/* Desktop Menu - Hidden on mobile, visible on md screens */}
+          <div className="md:hidden lg:flex items-center gap-8 flex-1 justify-center">
+            {menuItems &&
+              menuItems.length > 0 &&
+              menuItems.map((item, index) => (
+                <a
+                  key={index}
+                  href={item.href}
+                  className="text-gray-200 hover:text-yellow-400 transition-colors font-medium whitespace-nowrap text-base"
+                  onClick={() => trackMenuClick(item.text, "desktop_nav")}
+                >
+                  {item.text}
+                </a>
+              ))}
             <a
-              href="/blog/"
-              className="text-gray-300 hover:text-yellow-400 transition-colors"
+              href="/blog"
+              className="text-gray-200 hover:text-yellow-400 transition-colors font-medium whitespace-nowrap text-base"
               onClick={() => trackMenuClick("בלוג", "desktop_nav")}
             >
               בלוג
@@ -50,7 +52,7 @@ export const Navigation = (props) => {
           </div>
 
           {/* Right side buttons */}
-          <div className="flex items-center space-x-4 rtl:space-x-reverse">
+          <div className="flex items-center space-x-4 rtl:space-x-reverse lg:flex-shrink-0">
             {/* Phone button */}
             <a
               href={`tel:${phone}`}
@@ -75,7 +77,7 @@ export const Navigation = (props) => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg bg-yellow-500/20 hover:bg-yellow-500/30"
+              className="lg:hidden p-2 rounded-lg bg-yellow-500/20 hover:bg-yellow-500/30"
             >
               {isOpen ? (
                 <X className="w-5 h-5 text-yellow-400" />

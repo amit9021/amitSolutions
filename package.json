@@ -1,53 +1,28 @@
 {
-  "name": "yabat-air-conditioning",
+  "name": "amit-solutions",
+  "version": "2.0.0",
   "private": true,
-  "homepage": ".",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "next build && touch out/.nojekyll && gh-pages -d out --dotfiles",
+    "generate-sitemap": "node scripts/generate-sitemap.js"
+  },
   "dependencies": {
     "framer-motion": "^12.23.16",
     "lucide-react": "^0.544.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet-async": "^2.0.5",
+    "next": "^15.5.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "react-markdown": "^10.1.0",
-    "react-router-dom": "^7.9.3",
-    "react-scripts": "^5.0.1",
     "react-simple-image-viewer": "^0.0.8",
     "remark-gfm": "^4.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && node script.js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d docs",
-    "generate-sitemap": "node scripts/generate-sitemap.js",
-    "build-with-sitemap": "npm run generate-sitemap && npm run build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "gh-pages": "^6.3.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17"
-  },
-  "optionalDependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^14.4.3"
   }
 }
