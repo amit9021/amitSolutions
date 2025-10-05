@@ -4,6 +4,11 @@ export default function Document() {
   return (
     <Html lang="he" dir="rtl">
       <Head>
+        {/* Resource Hints for Performance */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+
         {/* Google Analytics */}
         <script
           async

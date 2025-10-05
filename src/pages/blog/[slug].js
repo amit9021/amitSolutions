@@ -122,10 +122,96 @@ export default function BlogPost({ post }) {
         <title>{`${post.title} - Amit Solutions`}</title>
         <meta name="description" content={post.excerpt} />
         <meta name="keywords" content={post.tags.join(", ")} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content={post.coverImage} />
+        <meta name="author" content={post.author} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`https://amit-solutions.co.il/blog/${post.slug}`} />
+
+        {/* Open Graph */}
         <meta property="og:type" content="article" />
+        <meta property="og:title" content={`${post.title} - Amit Solutions`} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:url" content={`https://amit-solutions.co.il/blog/${post.slug}`} />
+        <meta property="og:site_name" content="Amit Solutions" />
+        <meta property="og:locale" content="he_IL" />
+        <meta property="og:image" content={post.coverImage || "https://amit-solutions.co.il/img/blog-og.webp"} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={post.title} />
+        <meta property="article:published_time" content={post.publishedAt} />
+        <meta property="article:author" content={post.author} />
+        {post.tags.map((tag, index) => (
+          <meta key={index} property="article:tag" content={tag} />
+        ))}
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${post.title} - Amit Solutions`} />
+        <meta name="twitter:description" content={post.excerpt} />
+        <meta name="twitter:image" content={post.coverImage || "https://amit-solutions.co.il/img/blog-og.webp"} />
+
+        {/* Article Schema Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "headline": post.title,
+              "description": post.excerpt,
+              "image": post.coverImage || "https://amit-solutions.co.il/img/blog-og.webp",
+              "author": {
+                "@type": "Person",
+                "name": post.author
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Amit Solutions",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://amit-solutions.co.il/img/logo.webp"
+                }
+              },
+              "datePublished": post.publishedAt,
+              "dateModified": post.publishedAt,
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": `https://amit-solutions.co.il/blog/${post.slug}`
+              },
+              "keywords": post.tags.join(", ")
+            })
+          }}
+        />
+
+        {/* Breadcrumb Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "עמוד הבית",
+                  "item": "https://amit-solutions.co.il"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "בלוג",
+                  "item": "https://amit-solutions.co.il/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": post.title,
+                  "item": `https://amit-solutions.co.il/blog/${post.slug}`
+                }
+              ]
+            })
+          }}
+        />
       </Head>
 
       <main className="min-h-screen bg-black text-white">
@@ -211,9 +297,11 @@ export default function BlogPost({ post }) {
                 <div className="mb-12">
                   <img
                     src={post.coverImage}
-                    alt={post.title}
+                    alt={`תמונת כיסוי: ${post.title}`}
                     className="w-full h-64 md:h-96 object-cover rounded-2xl"
-                    loading="lazy"
+                    loading="eager"
+                    width="1200"
+                    height="630"
                   />
                 </div>
               )}

@@ -8,11 +8,12 @@ export const Header = (props) => {
   return (
     <section id="hero" className="hero">
       {/* Background Image */}
-      <img id="logo-header" src="/img/logo.webp" alt="Amit Solutions Logo" />
+      <img id="logo-header" src="/img/logo.webp" alt="Amit Solutions - לוגו חברת פיתוח אתרים לעסקים קטנים" />
       <img
         id="hero-background"
         src={data.backgroundImage}
-        alt="Hero Background"
+        alt="תמונת רקע - פיתוח אתרים מקצועי ומהיר"
+        loading="eager"
       />
 
       {/* Background Pattern */}

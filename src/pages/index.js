@@ -9,6 +9,8 @@ import { Contact } from "../components/contact";
 import { Footer } from "../components/footer";
 import { CTA } from "../components/cta";
 import { BlogPreview } from "../components/BlogPreview";
+import { Testimonials } from "../components/Testimonials";
+import { CookieConsent } from "../components/CookieConsent";
 import JsonData from "../data/data.json";
 import {
   trackPageView,
@@ -120,6 +122,11 @@ export default function Home() {
 
   return (
     <>
+      {/* Skip Navigation Link */}
+      <a href="#main-content" className="skip-link">
+        דלג לתוכן הראשי
+      </a>
+
       <Head>
         <title>{`${data?.Header?.title || "Amit Solutions"} - ${data?.Header?.tagline || "אתרים מהירים שמביאים פניות"}`}</title>
         <meta
@@ -186,14 +193,20 @@ export default function Home() {
         companyName={landingPageData.Header?.title}
         menuItems={landingPageData.Navigation?.menuItems}
       />
-      <Header data={landingPageData.Header} />
-      <About data={landingPageData.About} />
-      <Services data={landingPageData.Services} />
-      <BlogPreview />
-      <Shop data={landingPageData.Contact} />
-      <Contact data={landingPageData.Contact} />
+
+      <main id="main-content">
+        <Header data={landingPageData.Header} />
+        <About data={landingPageData.About} />
+        <Services data={landingPageData.Services} />
+        <BlogPreview />
+        <Testimonials />
+        <Shop data={landingPageData.Contact} />
+        <Contact data={landingPageData.Contact} />
+      </main>
+
       <Footer data={landingPageData.Contact} />
       <CTA data={landingPageData.Contact} />
+      <CookieConsent />
     </>
   );
 }

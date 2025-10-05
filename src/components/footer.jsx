@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { MessageCircle, Phone, Mail, MapPin, ExternalLink } from "lucide-react";
 
 export const Footer = (props) => {
@@ -100,6 +101,22 @@ export const Footer = (props) => {
                 >
                   צור קשר
                 </a>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-lg"
+                >
+                  בלוג
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/privacy-policy"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors text-lg"
+                >
+                  מדיניות פרטיות
+                </Link>
               </li>
             </ul>
           </motion.div>

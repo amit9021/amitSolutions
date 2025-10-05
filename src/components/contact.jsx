@@ -118,7 +118,7 @@ ${message}
                       htmlFor="name"
                       className="block text-base font-medium text-gray-300 mb-2"
                     >
-                      שם מלא
+                      שם מלא <span className="text-yellow-400" aria-label="שדה חובה">*</span>
                     </label>
                     <input
                       type="text"
@@ -129,6 +129,8 @@ ${message}
                       className="w-full px-4 py-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-lg"
                       placeholder="השם שלך"
                       required
+                      aria-required="true"
+                      aria-label="שם מלא"
                     />
                   </div>
                   <div>
@@ -136,7 +138,7 @@ ${message}
                       htmlFor="email"
                       className="block text-base font-medium text-gray-300 mb-2"
                     >
-                      אימייל
+                      אימייל <span className="text-yellow-400" aria-label="שדה חובה">*</span>
                     </label>
                     <input
                       type="email"
@@ -147,6 +149,8 @@ ${message}
                       className="w-full px-4 py-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-lg"
                       placeholder="example@email.com"
                       required
+                      aria-required="true"
+                      aria-label="כתובת אימייל"
                     />
                   </div>
                 </div>
@@ -156,7 +160,7 @@ ${message}
                     htmlFor="message"
                     className="block text-sm font-medium text-gray-300 mb-2"
                   >
-                    הודעה
+                    הודעה <span className="text-yellow-400" aria-label="שדה חובה">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -167,6 +171,8 @@ ${message}
                     className="w-full px-4 py-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
                     placeholder="ספר לי על הפרויקט שלך..."
                     required
+                    aria-required="true"
+                    aria-label="תוכן ההודעה"
                   />
                 </div>
 
@@ -175,8 +181,9 @@ ${message}
                   className="w-full bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 rounded-lg font-semibold text-lg flex items-center justify-center space-x-2 rtl:space-x-reverse transition-all duration-300"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  aria-label="שלח טופס יצירת קשר דרך WhatsApp"
                 >
-                  <Send className="w-5 h-5" />
+                  <Send className="w-5 h-5" aria-hidden="true" />
                   <span>שלח הודעה בווטסאפ</span>
                 </motion.button>
               </form>

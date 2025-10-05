@@ -30,15 +30,36 @@ export default function BlogIndex() {
   return (
     <>
       <Head>
-        <title>בלוג - Amit Solutions</title>
+        <title>בלוג - Amit Solutions | מדריכים על בניית אתרים ו-SEO</title>
         <meta
           name="description"
-          content="טיפים ומידע על בניית אתרים, SEO, ושיווק דיגיטלי לעסקים קטנים"
+          content="טיפים ומידע על בניית אתרים, SEO, ושיווק דיגיטלי לעסקים קטנים. מדריכים מעשיים לשיפור הנוכחות הדיגיטלית שלכם."
         />
         <meta
           name="keywords"
-          content="בלוג, אתרים, SEO, שיווק דיגיטלי, טיפים"
+          content="בלוג, אתרים, SEO, שיווק דיגיטלי, טיפים, עסקים קטנים, Google Business"
         />
+        <meta name="author" content="Amit Solutions" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://amit-solutions.co.il/blog/" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="בלוג - Amit Solutions | מדריכים על בניית אתרים ו-SEO" />
+        <meta property="og:description" content="טיפים ומידע על בניית אתרים, SEO, ושיווק דיגיטלי לעסקים קטנים" />
+        <meta property="og:url" content="https://amit-solutions.co.il/blog/" />
+        <meta property="og:site_name" content="Amit Solutions" />
+        <meta property="og:locale" content="he_IL" />
+        <meta property="og:image" content="https://amit-solutions.co.il/img/blog-og.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="בלוג Amit Solutions - מדריכים על בניית אתרים" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="בלוג - Amit Solutions | מדריכים על בניית אתרים ו-SEO" />
+        <meta name="twitter:description" content="טיפים ומידע על בניית אתרים, SEO, ושיווק דיגיטלי לעסקים קטנים" />
+        <meta name="twitter:image" content="https://amit-solutions.co.il/img/blog-og.webp" />
       </Head>
 
       <main className="min-h-screen bg-black text-white">
@@ -90,9 +111,11 @@ export default function BlogIndex() {
                       <div className="aspect-video overflow-hidden">
                         <img
                           src={post.coverImage}
-                          alt={post.title}
+                          alt={`תמונת כיסוי: ${post.title}`}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                           loading="lazy"
+                          width="600"
+                          height="338"
                         />
                       </div>
                     )}
