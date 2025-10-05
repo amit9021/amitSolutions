@@ -9,9 +9,13 @@ import { post as whatIsSeoAndWhyImportant } from "./what-is-seo-and-why-importan
 import { post as commonWebsiteMistakes } from "./10-common-website-mistakes-small-businesses.js";
 import { post as whatIsCta } from "./what-is-cta-call-to-action.js";
 import { post as websiteAnalyticsTracking } from "./website-analytics-tracking-guide.js";
+import { post as seoForBusinessesIsrael } from "./seo-for-businesses-in-israel.js";
+import { post as smartDigitalMarketing } from "./smart-digital-marketing-guide.js";
 // Get all posts
 export const getAllPosts = () => {
   return [
+    seoForBusinessesIsrael,
+    smartDigitalMarketing,
     websiteAnalyticsTracking,
     whatIsCta,
     commonWebsiteMistakes,
